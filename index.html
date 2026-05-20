@@ -1,0 +1,2532 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naxçıvanın "öz əli" — Strateji Yol Xəritəsi</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Cormorant Garamond:wght@400;500;600;700;800;900&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #122040;
+    --navy-light: #1a3060;
+    --gold: #b8973a;
+    --gold-light: #d4af5a;
+    --gold-pale: #e8d5a0;
+    --cream: #f5f0e8;
+    --cream-dark: #ede5d5;
+    --cream-mid: #f0ead8;
+    --white: #fdfaf4;
+    --text-dark: #1a1a2e;
+    --text-body: #2c2c3e;
+    --text-muted: #5a5a72;
+    --border-gold: rgba(184, 151, 58, 0.3);
+    --border-gold-strong: rgba(184, 151, 58, 0.6);
+    --shadow-deep: 0 20px 60px rgba(10, 22, 40, 0.15);
+    --shadow-card: 0 4px 24px rgba(10, 22, 40, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--cream);
+    color: var(--text-body);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ══════════════════════════════════════════
+     PRINT STYLES
+  ══════════════════════════════════════════ */
+  @media print {
+    body { background: white; font-size: 11pt; }
+    .cover-page { min-height: auto; page-break-after: always; }
+    .toc-page { page-break-after: always; }
+    .section { page-break-inside: avoid; }
+    .sidebar-nav { display: none; }
+    .print-btn { display: none; }
+    .section-card { box-shadow: none; border: 1px solid #ddd; }
+    table { font-size: 9pt; }
+  }
+
+  /* ══════════════════════════════════════════
+     COVER PAGE
+  ══════════════════════════════════════════ */
+  .cover-page {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 59px,
+        rgba(184,151,58,0.06) 60px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 59px,
+        rgba(184,151,58,0.06) 60px
+      );
+    pointer-events: none;
+  }
+
+  .cover-ornament-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--navy), var(--gold), var(--gold-light), var(--gold), var(--navy));
+  }
+
+  .cover-ornament-bottom {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--navy), var(--gold), var(--gold-light), var(--gold), var(--navy));
+  }
+
+  .cover-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 60px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-emblem {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .cover-emblem svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .cover-top-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    opacity: 0.9;
+  }
+
+  .cover-divider {
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 32px;
+  }
+
+  .cover-title-az {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+  }
+
+  .cover-title-az .gold-word {
+    color: var(--gold-light);
+  }
+
+  .cover-subtitle {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    color: rgba(245, 240, 232, 0.75);
+    font-style: italic;
+    max-width: 680px;
+    line-height: 1.7;
+    margin: 24px auto 0;
+  }
+
+  .cover-divider-2 {
+    width: 320px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 40px auto;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+    opacity: 0.8;
+  }
+
+  .cover-meta-value {
+    font-family: 'EB Garamond', serif;
+    font-size: 14px;
+    color: rgba(245,240,232,0.85);
+    font-style: italic;
+  }
+
+  .cover-meta-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .cover-footer {
+    padding: 30px 60px;
+    border-top: 1px solid rgba(184,151,58,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-footer-left {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: rgba(184,151,58,0.6);
+    text-transform: uppercase;
+  }
+
+  .cover-footer-right {
+    font-family: 'EB Garamond', serif;
+    font-size: 13px;
+    color: rgba(245,240,232,0.4);
+    font-style: italic;
+  }
+
+  /* ══════════════════════════════════════════
+     TABLE OF CONTENTS
+  ══════════════════════════════════════════ */
+  .toc-page {
+    background: var(--white);
+    padding: 80px 100px;
+    min-height: 100vh;
+    position: relative;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .toc-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border-gold);
+  }
+
+  .toc-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .toc-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 1px;
+  }
+
+  .toc-list {
+    list-style: none;
+    counter-reset: toc-counter;
+  }
+
+  .toc-list li {
+    counter-increment: toc-counter;
+    margin-bottom: 0;
+  }
+
+  .toc-list a {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 14px 20px;
+    text-decoration: none;
+    color: var(--text-body);
+    border-bottom: 1px solid rgba(184,151,58,0.1);
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .toc-list a:hover {
+    background: rgba(184,151,58,0.05);
+    color: var(--navy);
+    padding-left: 28px;
+  }
+
+  .toc-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    color: var(--gold);
+    min-width: 28px;
+    letter-spacing: 1px;
+  }
+
+  .toc-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .toc-dots {
+    flex: 1;
+    border-bottom: 1px dotted rgba(184,151,58,0.3);
+    margin: 0 8px;
+    position: relative;
+    top: -4px;
+  }
+
+  /* ══════════════════════════════════════════
+     NAVIGATION SIDEBAR
+  ══════════════════════════════════════════ */
+  .sidebar-nav {
+    position: fixed;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sidebar-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.25;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid var(--gold);
+  }
+
+  .sidebar-dot:hover,
+  .sidebar-dot.active {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+
+  /* ══════════════════════════════════════════
+     MAIN CONTENT WRAPPER
+  ══════════════════════════════════════════ */
+  .document-body {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 60px 100px;
+  }
+
+  /* ══════════════════════════════════════════
+     SECTION HEADERS
+  ══════════════════════════════════════════ */
+  .section {
+    padding: 80px 0 20px;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.3;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--navy);
+    position: relative;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .subsection-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 48px 0 20px;
+    padding-left: 20px;
+    border-left: 3px solid var(--gold);
+    line-height: 1.4;
+  }
+
+  .sub-subsection-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--navy-mid);
+    margin: 36px 0 14px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ══════════════════════════════════════════
+     BODY TEXT
+  ══════════════════════════════════════════ */
+  p {
+    margin-bottom: 1.3em;
+    text-align: justify;
+    hyphens: auto;
+    color: var(--text-body);
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  /* ══════════════════════════════════════════
+     SECTION CARDS (shaded blocks)
+  ══════════════════════════════════════════ */
+  .section-card {
+    background: var(--white);
+    border: 1px solid var(--border-gold);
+    border-left: 4px solid var(--gold);
+    padding: 36px 40px;
+    margin: 32px 0;
+    box-shadow: var(--shadow-card);
+    position: relative;
+  }
+
+  .section-card::before {
+    content: '';
+    position: absolute;
+    top: -1px; right: -1px;
+    width: 20px; height: 20px;
+    border-top: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+  }
+
+  /* ══════════════════════════════════════════
+     NUMBERED LISTS (institutional items)
+  ══════════════════════════════════════════ */
+  .numbered-list {
+    list-style: none;
+    counter-reset: item-counter;
+    margin: 24px 0;
+  }
+
+  .numbered-list li {
+    counter-increment: item-counter;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 28px;
+    align-items: flex-start;
+  }
+
+  .numbered-list li::before {
+    content: counter(item-counter);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--white);
+    background: var(--navy);
+    min-width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+    flex-shrink: 0;
+    border: 1px solid var(--gold);
+  }
+
+  .numbered-list li .item-content {
+    flex: 1;
+  }
+
+  .numbered-list li .item-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  /* ══════════════════════════════════════════
+     BULLET LISTS
+  ══════════════════════════════════════════ */
+  .bullet-list {
+    list-style: none;
+    margin: 20px 0 20px 20px;
+  }
+
+  .bullet-list li {
+    padding: 5px 0 5px 24px;
+    position: relative;
+    color: var(--text-body);
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .bullet-list li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 8px;
+    top: 10px;
+  }
+
+  /* ══════════════════════════════════════════
+     TABLES
+  ══════════════════════════════════════════ */
+  .table-wrapper {
+    overflow-x: auto;
+    margin: 36px 0;
+    border: 1px solid var(--border-gold-strong);
+    box-shadow: var(--shadow-card);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13.5px;
+  }
+
+  thead tr {
+    background: var(--navy);
+  }
+
+  thead th {
+    padding: 14px 16px;
+    text-align: left;
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-right: 1px solid rgba(184,151,58,0.2);
+    white-space: nowrap;
+  }
+
+  thead th:last-child { border-right: none; }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(184,151,58,0.15);
+    transition: background 0.15s;
+  }
+
+  tbody tr:nth-child(even) {
+    background: rgba(184,151,58,0.04);
+  }
+
+  tbody tr:hover {
+    background: rgba(184,151,58,0.09);
+  }
+
+  tbody td {
+    padding: 13px 16px;
+    color: var(--text-body);
+    border-right: 1px solid rgba(184,151,58,0.1);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  tbody td:last-child { border-right: none; }
+
+  tbody td:first-child {
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  /* ══════════════════════════════════════════
+     SWOT TABLE (special)
+  ══════════════════════════════════════════ */
+  .swot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border-gold-strong);
+    border: 1px solid var(--border-gold-strong);
+    margin: 36px 0;
+    box-shadow: var(--shadow-card);
+  }
+
+  .swot-cell {
+    padding: 28px;
+    background: var(--white);
+  }
+
+  .swot-cell.strengths { border-top: 4px solid #2d6a4f; }
+  .swot-cell.weaknesses { border-top: 4px solid #c1121f; }
+  .swot-cell.opportunities { border-top: 4px solid #1a659e; }
+  .swot-cell.threats { border-top: 4px solid #e85d04; }
+
+  .swot-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .swot-cell.strengths .swot-label { color: #2d6a4f; }
+  .swot-cell.weaknesses .swot-label { color: #c1121f; }
+  .swot-cell.opportunities .swot-label { color: #1a659e; }
+  .swot-cell.threats .swot-label { color: #e85d04; }
+
+  .swot-cell ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .swot-cell ul li {
+    padding: 5px 0 5px 18px;
+    position: relative;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-body);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .swot-cell ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+    font-size: 11px;
+  }
+
+  /* ══════════════════════════════════════════
+     ROADMAP TABLE
+  ══════════════════════════════════════════ */
+  .roadmap-phase {
+    background: var(--white);
+    border: 1px solid var(--border-gold);
+    margin: 24px 0;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+  }
+
+  .roadmap-phase-header {
+    display: grid;
+    grid-template-columns: 200px 160px 1fr;
+    background: var(--navy-mid);
+    padding: 0;
+  }
+
+  .roadmap-phase-name {
+    padding: 18px 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    border-right: 1px solid rgba(184,151,58,0.2);
+    display: flex;
+    align-items: center;
+  }
+
+  .roadmap-phase-time {
+    padding: 18px 20px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 12px;
+    color: var(--gold-pale);
+    border-right: 1px solid rgba(184,151,58,0.2);
+    display: flex;
+    align-items: center;
+    font-style: italic;
+  }
+
+  .roadmap-phase-goal {
+    padding: 18px 24px;
+    font-family: 'EB Garamond', serif;
+    font-size: 14px;
+    color: rgba(245,240,232,0.8);
+    font-style: italic;
+    display: flex;
+    align-items: center;
+  }
+
+  .roadmap-phase-body {
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    border-top: 1px solid var(--border-gold);
+  }
+
+  .roadmap-actions h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .roadmap-actions ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .roadmap-actions ul li {
+    padding: 5px 0 5px 18px;
+    position: relative;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-body);
+    border-bottom: 1px solid rgba(184,151,58,0.08);
+  }
+
+  .roadmap-actions ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 10px;
+    top: 7px;
+  }
+
+  .roadmap-output {
+    background: rgba(184,151,58,0.05);
+    padding: 16px 20px;
+    border: 1px solid var(--border-gold);
+    border-left: 3px solid var(--gold);
+  }
+
+  .roadmap-output h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .roadmap-output p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-body);
+    margin: 0;
+    text-align: left;
+  }
+
+  /* ══════════════════════════════════════════
+     KPI CARDS
+  ══════════════════════════════════════════ */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 32px 0;
+  }
+
+  .kpi-card {
+    background: var(--white);
+    border: 1px solid var(--border-gold);
+    padding: 28px 24px;
+    position: relative;
+    box-shadow: var(--shadow-card);
+  }
+
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--navy), var(--gold));
+  }
+
+  .kpi-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .kpi-unit {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .kpi-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 8px;
+    display: block;
+  }
+
+  .kpi-desc {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    color: var(--text-body);
+    margin-top: 12px;
+    line-height: 1.6;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-gold);
+  }
+
+  /* ══════════════════════════════════════════
+     QUOTE / HIGHLIGHT BLOCK
+  ══════════════════════════════════════════ */
+  .highlight-block {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 40px 48px;
+    margin: 40px 0;
+    position: relative;
+    box-shadow: var(--shadow-deep);
+  }
+
+  .highlight-block::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(184,151,58,0.25);
+    pointer-events: none;
+  }
+
+  .highlight-block p {
+    font-family: 'EB Garamond', serif;
+    font-size: 19px;
+    font-style: italic;
+    color: rgba(245,240,232,0.9);
+    line-height: 1.85;
+    text-align: center;
+    margin: 0;
+  }
+
+  .highlight-block .attribution {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+    font-style: normal;
+  }
+
+  /* ══════════════════════════════════════════
+     RISK CARDS
+  ══════════════════════════════════════════ */
+  .risk-item {
+    background: var(--white);
+    border: 1px solid var(--border-gold);
+    margin: 24px 0;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+  }
+
+  .risk-header {
+    display: flex;
+    align-items: stretch;
+    background: var(--cream-mid);
+    border-bottom: 1px solid var(--border-gold);
+  }
+
+  .risk-num {
+    background: var(--navy);
+    color: var(--gold-light);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+  }
+
+  .risk-title-block {
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  .risk-title-block h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.5px;
+  }
+
+  .risk-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .risk-problem {
+    padding: 24px 28px;
+    border-right: 1px solid var(--border-gold);
+  }
+
+  .risk-solution {
+    padding: 24px 28px;
+    background: rgba(184,151,58,0.03);
+  }
+
+  .risk-col-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+    font-weight: 600;
+  }
+
+  .risk-problem .risk-col-label { color: #c1121f; }
+  .risk-solution .risk-col-label { color: #2d6a4f; }
+
+  .risk-body p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--text-body);
+    margin: 0;
+    text-align: left;
+  }
+
+  /* ══════════════════════════════════════════
+     CONCLUSION BOX
+  ══════════════════════════════════════════ */
+  .conclusion-section {
+    background: var(--navy);
+    padding: 80px 100px;
+    margin: 60px -60px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .conclusion-section::before {
+    content: '';
+    position: absolute;
+    top: 6px; left: 6px; right: 6px; bottom: 6px;
+    border: 1px solid rgba(184,151,58,0.2);
+    pointer-events: none;
+  }
+
+  .conclusion-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 40px,
+        rgba(184,151,58,0.03) 40px,
+        rgba(184,151,58,0.03) 41px
+      );
+  }
+
+  .conclusion-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .conclusion-inner .section-label {
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .conclusion-inner .section-title {
+    color: var(--white);
+    border-bottom-color: rgba(184,151,58,0.4);
+    margin-bottom: 40px;
+  }
+
+  .conclusion-inner p {
+    color: rgba(245,240,232,0.85);
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  .strategic-theses {
+    margin: 36px 0;
+  }
+
+  .thesis-item {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 20px 24px;
+    background: rgba(184,151,58,0.07);
+    border-left: 3px solid var(--gold);
+  }
+
+  .thesis-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--gold);
+    font-weight: 700;
+    line-height: 1;
+    min-width: 30px;
+  }
+
+  .thesis-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    color: rgba(245,240,232,0.85);
+    line-height: 1.8;
+    flex: 1;
+    margin: 0;
+    text-align: left;
+  }
+
+  .practical-recs {
+    margin-top: 40px;
+    padding-top: 36px;
+    border-top: 1px solid rgba(184,151,58,0.2);
+  }
+
+  .practical-recs h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+
+  .rec-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    padding: 16px 20px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(184,151,58,0.12);
+  }
+
+  .rec-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    background: rgba(184,151,58,0.1);
+    border: 1px solid rgba(184,151,58,0.3);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .rec-text {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    color: rgba(245,240,232,0.82);
+    line-height: 1.7;
+    flex: 1;
+    margin: 0;
+    text-align: left;
+  }
+
+  /* ══════════════════════════════════════════
+     REFERENCES
+  ══════════════════════════════════════════ */
+  .references-section {
+    padding: 60px 0 40px;
+    border-top: 1px solid var(--border-gold);
+    margin-top: 40px;
+  }
+
+  .references-section .section-title {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+
+  .ref-list {
+    list-style: none;
+  }
+
+  .ref-list li {
+    display: flex;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(184,151,58,0.1);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-body);
+  }
+
+  .ref-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    color: var(--gold);
+    min-width: 24px;
+    font-weight: 600;
+    padding-top: 2px;
+  }
+
+  .ref-list a {
+    color: var(--navy-light);
+    word-break: break-all;
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE SEPARATOR
+  ══════════════════════════════════════════ */
+  .page-sep {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 60px 0 0;
+    opacity: 0.4;
+  }
+
+  .page-sep-line {
+    flex: 1;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .page-sep-diamond {
+    color: var(--gold);
+    font-size: 10px;
+  }
+
+  /* ══════════════════════════════════════════
+     PRINT BUTTON
+  ══════════════════════════════════════════ */
+  .print-btn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: var(--navy);
+    color: var(--gold-light);
+    border: 1px solid var(--gold);
+    padding: 12px 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    z-index: 200;
+    box-shadow: 0 4px 20px rgba(10,22,40,0.3);
+    transition: all 0.2s;
+  }
+
+  .print-btn:hover {
+    background: var(--gold);
+    color: var(--navy);
+  }
+
+  /* ══════════════════════════════════════════
+     SECTOR CARDS (industry modernization)
+  ══════════════════════════════════════════ */
+  .sector-card {
+    background: var(--white);
+    border: 1px solid var(--border-gold);
+    margin: 28px 0;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+  }
+
+  .sector-card-header {
+    background: linear-gradient(135deg, var(--navy), var(--navy-light));
+    padding: 20px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sector-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+  }
+
+  .sector-job-badge {
+    background: rgba(184,151,58,0.15);
+    border: 1px solid rgba(184,151,58,0.4);
+    padding: 5px 14px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9px;
+    color: var(--gold-light);
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .sector-card-body {
+    padding: 24px 28px;
+  }
+
+  .sector-card-body p {
+    font-size: 16px;
+    margin-bottom: 0.8em;
+    text-align: left;
+  }
+
+  .sector-tag {
+    display: inline-block;
+    background: rgba(184,151,58,0.1);
+    border: 1px solid rgba(184,151,58,0.3);
+    color: var(--navy);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    margin: 3px 3px 3px 0;
+    font-weight: 600;
+  }
+
+  .modernization-block {
+    background: rgba(10,22,40,0.04);
+    border-left: 3px solid var(--navy);
+    padding: 16px 20px;
+    margin: 12px 0;
+  }
+
+  .modernization-block .mod-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--navy);
+    text-transform: uppercase;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .modernization-block p {
+    font-size: 15px;
+    color: var(--text-body);
+    margin: 0;
+    line-height: 1.7;
+    text-align: left;
+  }
+
+  /* ══════════════════════════════════════════
+     INTERNATIONAL COMPARISON CARDS
+  ══════════════════════════════════════════ */
+  .comparison-card {
+    background: var(--white);
+    border: 1px solid var(--border-gold);
+    margin: 24px 0;
+    display: flex;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+
+  .comparison-flag {
+    background: var(--navy-mid);
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    border-right: 1px solid rgba(184,151,58,0.2);
+  }
+
+  .comparison-content {
+    padding: 24px 28px;
+    flex: 1;
+  }
+
+  .comparison-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .comparison-content p {
+    font-size: 16px;
+    text-align: left;
+    margin-bottom: 0.6em;
+  }
+
+  .lesson-box {
+    background: rgba(184,151,58,0.07);
+    border: 1px solid var(--border-gold);
+    padding: 12px 16px;
+    margin-top: 12px;
+  }
+
+  .lesson-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .lesson-box p {
+    font-size: 15px;
+    margin: 0;
+    font-style: italic;
+    text-align: left;
+    color: var(--navy);
+  }
+
+  /* ══════════════════════════════════════════
+     PRIORITY BADGE
+  ══════════════════════════════════════════ */
+  .priority-mutleq {
+    background: var(--navy);
+    color: var(--gold-light);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8px;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    font-weight: 700;
+  }
+
+  .priority-yuksek {
+    background: rgba(184,151,58,0.15);
+    color: var(--navy);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8px;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    font-weight: 700;
+    border: 1px solid var(--gold);
+  }
+
+  .priority-asagi {
+    background: #f0f0f0;
+    color: #666;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8px;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    font-weight: 700;
+  }
+
+  /* Platform section */
+  .platform-feature {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-gold);
+  }
+
+  .platform-feature:last-child {
+    border-bottom: none;
+  }
+
+  .platform-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 8px;
+    flex-shrink: 0;
+    border: 2px solid var(--navy);
+    box-shadow: 0 0 0 2px var(--gold);
+  }
+
+  .platform-feature-content h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .platform-feature-content p {
+    font-size: 15.5px;
+    margin: 0;
+    text-align: left;
+    color: var(--text-body);
+    line-height: 1.75;
+  }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR NAV -->
+<nav class="sidebar-nav" id="sidebarNav" aria-hidden="true">
+  <div class="sidebar-dot" onclick="scrollToSection('cover')" title="Başlıq"></div>
+  <div class="sidebar-dot" onclick="scrollToSection('toc')" title="Mündəricat"></div>
+  <div class="sidebar-dot" onclick="scrollToSection('s1')" title="Konseptual çərçivə"></div>
+  <div class="sidebar-dot" onclick="scrollToSection('s2')" title="İnstitusional təhlil"></div>
+  <div class="sidebar-dot" onclick="scrollToSection('s3')" title="Sənaye potensialı"></div>
+  <div class="sidebar-dot" onclick="scrollToSection('s4')" title="Regional xəritə"></div>
+  <div class="sidebar-dot" onclick="scrollToSection('s5')" title="Beynəlxalq təcrübə"></div>
+  <div class="sidebar-dot" onclick="scrollToSection('s6')" title="Özəl sahibkarlıq modeli"></div>
+  <div class="sidebar-dot" onclick="scrollToSection('s7')" title="Platforma"></div>
+  <div class="sidebar-dot" onclick="scrollToSection('s8')" title="Fəaliyyət planı"></div>
+  <div class="sidebar-dot" onclick="scrollToSection('s9')" title="SWOT"></div>
+  <div class="sidebar-dot" onclick="scrollToSection('s10')" title="Nəticə"></div>
+  <div class="sidebar-dot" onclick="scrollToSection('s11')" title="İstinadlar"></div>
+</nav>
+
+<button class="print-btn" onclick="window.print()">⊞ Çap / PDF</button>
+
+<!-- ╔══════════════════════════════════════════════╗ -->
+<!-- ║              COVER PAGE                       ║ -->
+<!-- ╚══════════════════════════════════════════════╝ -->
+<div class="cover-page" id="cover">
+  <div class="cover-bg-pattern"></div>
+  <div class="cover-ornament-top"></div>
+
+  <div class="cover-inner">
+    <!-- Emblem -->
+    <div class="cover-emblem">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,8 58,35 85,35 64,52 72,78 50,62 28,78 36,52 15,35 42,35" fill="none" stroke="#b8973a" stroke-width="1.5"/>
+        <polygon points="50,18 56,36 75,36 61,47 67,66 50,55 33,66 39,47 25,36 44,36" fill="rgba(184,151,58,0.1)" stroke="#b8973a" stroke-width="0.8"/>
+        <circle cx="50" cy="50" r="10" fill="none" stroke="#b8973a" stroke-width="1"/>
+        <circle cx="50" cy="50" r="4" fill="#b8973a" opacity="0.7"/>
+      </svg>
+    </div>
+
+    <div class="cover-top-label">Naxçıvan Muxtar Respublikasında İqtisadi Transformasiya üzrə Təkliflər Toplusu</div>
+    <div class="cover-divider"></div>
+
+    <div class="cover-title-az">
+      Naxçıvanın <span class="gold-word">"öz əli"</span>
+    </div>
+
+    <p class="cover-subtitle">
+      Naxçıvan Muxtar Respublikasının İqtisadi Transformasiyası, Dövlət Mərkəzli İdarəetmədən Qarşılıqlı Etimad Əsaslı Özəl Sahibkarlıq Ekosisteminə Keçid Üzrə Strateji Yol Xəritəsi
+    </p>
+
+    <div class="cover-divider-2"></div>
+
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Sənəd növü</span>
+        <span class="cover-meta-value">Strateji Yol Xəritəsi</span>
+      </div>
+      <div class="cover-meta-dot"></div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Status</span>
+        <span class="cover-meta-value">Gizli · Dövlət Rəhbərliyinə Məxsus</span>
+      </div>
+      <div class="cover-meta-dot"></div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">İl</span>
+        <span class="cover-meta-value">2025–2026</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-footer-left">İqtisadi Transformasiya · Strateji Planlaşdırma</div>
+    <div class="cover-footer-right">Post-avtoritar regional iqtisadi bərpa sənədi</div>
+  </div>
+  <div class="cover-ornament-bottom"></div>
+</div>
+
+<!-- ╔══════════════════════════════════════════════╗ -->
+<!-- ║           TABLE OF CONTENTS                   ║ -->
+<!-- ╚══════════════════════════════════════════════╝ -->
+<div class="toc-page" id="toc">
+  <div class="toc-header">
+    <span class="toc-label">Sənədin Strukturu</span>
+    <div class="toc-title">M Ü N D Ə R İ C A T</div>
+  </div>
+  <ul class="toc-list">
+    <li><a href="#s1"><span class="toc-num">I.</span><span class="toc-text">Sənədin konseptual çərçivəsi</span><span class="toc-dots"></span></a></li>
+    <li><a href="#s2"><span class="toc-num">II.</span><span class="toc-text">İnstitusional təhlil: Keçmiş iqtisadi modelin anatomiyası və keçid iqtisadiyyatı psixologiyası</span><span class="toc-dots"></span></a></li>
+    <li><a href="#s2a"><span class="toc-num">II.1</span><span class="toc-text" style="padding-left:16px">Keçmiş dövlət idarəetməsi və iqtisadi rəqəmlərin arxasındakı həqiqət</span><span class="toc-dots"></span></a></li>
+    <li><a href="#s2b"><span class="toc-num">II.2</span><span class="toc-text" style="padding-left:16px">"Şifahi tapşırıq iqtisadiyyatı" və onun çoxşaxəli fəsadları</span><span class="toc-dots"></span></a></li>
+    <li><a href="#s3"><span class="toc-num">III.</span><span class="toc-text">Sovet mirası olan sənaye və istehsal potensialı: tarixi baza və modernizasiya ssenariləri</span><span class="toc-dots"></span></a></li>
+    <li><a href="#s3a"><span class="toc-num">III.1</span><span class="toc-text" style="padding-left:16px">Naxçıvanın tarixi sənaye komplekslərinin təhlili</span><span class="toc-dots"></span></a></li>
+    <li><a href="#s3b"><span class="toc-num">III.2</span><span class="toc-text" style="padding-left:16px">Sənaye potensialı üzrə xülasə və cəlb ediləcək mexanizmlər</span><span class="toc-dots"></span></a></li>
+    <li><a href="#s4"><span class="toc-num">IV.</span><span class="toc-text">Naxçıvanın regional iqtisadi potensial xəritəsi: Qlobal bazarlara inteqrasiya</span><span class="toc-dots"></span></a></li>
+    <li><a href="#s4a"><span class="toc-num">IV.1</span><span class="toc-text" style="padding-left:16px">Sektorların detallı təhlili</span><span class="toc-dots"></span></a></li>
+    <li><a href="#s4b"><span class="toc-num">IV.2</span><span class="toc-text" style="padding-left:16px">Sektor-prioritet matrisi və iqtisadi həssaslıq</span><span class="toc-dots"></span></a></li>
+    <li><a href="#s5"><span class="toc-num">V.</span><span class="toc-text">Beynəlxalq təcrübənin müqayisəli təhlili və Naxçıvana tətbiq imkanları</span><span class="toc-dots"></span></a></li>
+    <li><a href="#s6"><span class="toc-num">VI.</span><span class="toc-text">Naxçıvan üçün "özəl sahibkarlıq iqtisadiyyatı" modeli</span><span class="toc-dots"></span></a></li>
+    <li><a href="#s7"><span class="toc-num">VII.</span><span class="toc-text">"InvestInNakhchivan" platformasının tam yeni konsepsiyası</span><span class="toc-dots"></span></a></li>
+    <li><a href="#s8"><span class="toc-num">VIII.</span><span class="toc-text">Praktiki fəaliyyət planı (roadmap) və əsas göstəricilər (KPI)</span><span class="toc-dots"></span></a></li>
+    <li><a href="#s9"><span class="toc-num">IX.</span><span class="toc-text">SWOT analiz və strateji risk idarəetməsi</span><span class="toc-dots"></span></a></li>
+    <li><a href="#s10"><span class="toc-num">X.</span><span class="toc-text">Nəticə və tövsiyələr</span><span class="toc-dots"></span></a></li>
+    <li><a href="#s11"><span class="toc-num">XI.</span><span class="toc-text">İstinadlar</span><span class="toc-dots"></span></a></li>
+  </ul>
+</div>
+
+<!-- ╔══════════════════════════════════════════════╗ -->
+<!-- ║              DOCUMENT BODY                    ║ -->
+<!-- ╚══════════════════════════════════════════════╝ -->
+<div class="document-body">
+
+  <!-- ─── SECTION I ─── -->
+  <div class="section" id="s1">
+    <div class="section-header">
+      <span class="section-label">Birinci Bölmə</span>
+      <h2 class="section-title">Sənədin Konseptual Çərçivəsi</h2>
+    </div>
+
+    <p>Naxçıvan Muxtar Respublikasının coğrafi eksklav statusu, mürəkkəb regional geosiyasəti və uzun illər davam etmiş mərkəzləşdirilmiş inzibati idarəetmə təcrübəsi onun makroiqtisadi modelinin xüsusi, kövrək və unikal bir strukturda formalaşmasını şərtləndirmişdir. Mövcud vəziyyətin dərindən və rasional təhlili göstərir ki, regionun inkişaf paradiqmasında müşahidə olunan əsas fundamental problem ənənəvi olaraq qəbul edildiyi kimi təkcə maliyyə, investisiya və ya kapital çatışmazlığı deyil. İqtisadi durğunluğun və passivliyin kökündə duran əsas məsələ iqtisadi fəaliyyəti, risk almağı və rəqabəti stimullaşdıran institusional mühitin dərin deformasiyasıdır. Naxçıvanda iqtisadi inkişafın gələcək arxitekturasının əsas mühərriki heç bir halda mərkəzi büdcə transfertləri və ya birbaşa dövlət xərcləri ola bilməz; bu mühərrik müstəsna olaraq koordinasiyalı özəl təşəbbüs və etimad əsaslı sahibkarlıq ekosistemi olmalıdır. Bu fəlsəfə, iqtisadi idarəetmənin mexaniki mərkəzləşdirmədən orqanik, bazar əsaslı mərkəzsizləşdirməyə keçidini daxili zərurətə çevirir.</p>
+
+    <p>Keçid iqtisadiyyatlarında və xüsusilə post-sovet məkanında iqtisadi durğunluğun əsas səbəblərindən biri rəsmi institutların zəifləməsi fonunda qeyri-rəsmi institutların (informal institutions) dominantlıq qazanması, bazarı inhisara alması və rəqabəti əvəzləməsidir.<sup>1</sup> Tədqiqatlar göstərir ki, inkişaf etməkdə olan və keçid dövrünü yaşayan ölkələrdə təşəbbüskarlığın inkişafı və sahibkarlıq fəaliyyətinin genişlənməsi birbaşa olaraq formal qanunların deyil, cəmiyyətdə mövcud olan qeyri-rəsmi davranış normalarının, idarəetmə ənənələrinin və şəbəkələşmə formalarının təsirinə məruz qalır.<sup>2</sup></p>
+
+    <p>Naxçıvanın iqtisadi mənzərəsində uzun illər ərzində formalaşmış təşəbbüs mühitinin zəifliyi, sahibkar koordinasiyasının (entrepreneurial coordination) mütləq yoxluğu, bazar əlaqələrinin süni şəkildə qoparılması və nəhayət, dərin qorxu psixologiyası məhz mərkəzləşdirilmiş inzibati komanda sisteminin ən ağır yan təsirləridir.</p>
+
+    <p>İnstitusional iqtisadiyyat və sosiologiya nəzəriyyələrinə əsasən, bu cür sərt nəzarət mühitlərində "etimad iqtisadiyyatı" (trust economy) tamamilə sıradan çıxır və məhv olur.<sup>4</sup> Etimad iqtisadiyyatı bazar subyektləri arasında müqavilələrin, şifahi razılaşmaların və şərikli fəaliyyətlərin dövlətin birbaşa təsirləri olmadan icra edilə biləcəyinə inamı ifadə edir. Bu inamın sarsıldığı şəraitdə sahibkarlar arasında üfüqi əlaqələr zəifləyir, kooperasiya qeyri-mümkün hala gəlir və yalnız şaquli, asılılıq yaradan, dövlətə bağlı qoruma mexanizmləri işləyir. Son illərdə Naxçıvanda səlahiyyətli nümayəndəliyin təsis olunması fonunda "regional iqtisadi bərpa" (post-authoritarian regional economic recovery) dövründə qarşıya çıxan ən böyük çətinlik, dağıdılmış sənaye müəssisələrini bərpa etməkdən daha çox, zədələnmiş iqtisadi etimadın və cəmiyyətdəki institusional davranış modellərinin yenidən bərpasıdır. Şəxslərin və biznes qurumlarının köhnə reflekslərdən xilas olması (generational change) üçün bəzən on illiklər tələb oluna bilər.<sup>4</sup> Lakin muxtar respublikanın müasir sosial-iqtisadi reallığında bu lüksə sahib deyilik.</p>
+
+    <p>Buna görə də, qurulacaq yeni iqtisadi memarlıq bir neçə fundamental konseptə söykənməlidir. Birincisi, kiçik regionların iqtisadi miqyaslanması (small-region economic scaling) prinsipi Naxçıvan üçün həyati əhəmiyyət daşıyır. Məhdud daxili bazar və aşağı əhali sayı, ənənəvi idxaləvəzləyici siyasətin uğursuzluğunu qabaqcadan təyin edir. Naxçıvan iqtisadiyyatı ilk gündən qlobal və ya ən azı makro-regional miqyaslanmanı (Türkiyə, Rusiya, Avropa) hədəfləməlidir. İkincisi, tərk edilmiş istehsal güclərinin yenidən fəaliyyətə başlaması üçün mərkəzi planlaşdırma deyil, koordinasiya iqtisadiyyatı (coordination economy) canlandırılmalıdır.<sup>6</sup> Bu, dövlətin tənzimləyici rolunun azaldılması və sahibkarların, təhsil müəssisələrinin və xarici investorların ortaq maraqlar ətrafında birgə fəaliyyətini nəzərdə tutur. Nəhayət, bütün bu elementlər sağlam, şəffaf və rəqabətədavamlı sahibkarlıq ekosistemini (entrepreneurial ecosystem) formalaşdırmalıdır. Yalnız bu cür kompleks bir ekosistem yerli investisiya iqlimini (local investment climate) bərpa edə, yerli kapitalın qaçışının qarşısını ala və qlobal resursları cəlb edə bilər.</p>
+  </div>
+
+  <div class="page-sep"><div class="page-sep-line"></div><div class="page-sep-diamond">◆</div><div class="page-sep-line"></div></div>
+
+  <!-- ─── SECTION II ─── -->
+  <div class="section" id="s2">
+    <div class="section-header">
+      <span class="section-label">İkinci Bölmə</span>
+      <h2 class="section-title">İnstitusional Təhlil: Keçmiş İqtisadi Modelin Anatomiyası və Keçid İqtisadiyyatı Psixologiyası</h2>
+    </div>
+
+    <h3 class="subsection-title" id="s2a">Keçmiş Dövlət İdarəetməsi və İqtisadi Rəqəmlərin Arxasındakı Həqiqət</h3>
+
+    <p>Naxçıvan Muxtar Respublikasında səlahiyyətli nümayəndəlik institutu yarananadək keçmiş rəhbərliyinin həyata keçirdiyi iqtisadi model mürəkkəb sosioloji və iqtisadi paradiqmaları özündə ehtiva edirdi. Bu modeli iqtisadi ədəbiyyatda mövcud olan terminlərlə "hiper-mərkəzləşdirilmiş regional dövlət kapitalizmi" və ya "qapalı kvota iqtisadiyyatı" kimi xarakterizə etmək mümkündür. Bu sistemdə dövlət (və ya onu təmsil edən rəhbərlik) yalnız makroiqtisadi çərçivəni tənzimləyən, qanunların aliliyini qoruyan neytral bir hakim rolu oynamır, əksinə, həm əsas oyunçu, həm dominant istehsalçı, həm yeganə sifarişçi, həm də mütləq kapital paylayıcısı kimi çıxış edirdi.</p>
+
+    <p>Rəsmi statistik hesabatlar illər boyu bu sistemin fasiləsiz və yüksələn xətt üzrə inkişafını nümayiş etdirmişdir. Məsələn, 2021-ci ilin yekunlarına dair rəsmi makroiqtisadi məlumatlara görə, Naxçıvanda Ümumi Daxili Məhsul (ÜDM) istehsalı 2020-ci illə müqayisədə 2,4 faiz artaraq 3 milyard manatı keçmiş, adambaşına düşən həcm isə 6525 manat təşkil etmişdir.<sup>8</sup> Həmin hesabatlarda ÜDM-in 59 faizdən çoxunun birbaşa istehsalın payına düşdüyü, sahibkarlara güya 31 milyon manat kredit verildiyi və il ərzində 120 yeni istehsal və xidmət sahəsinin fəaliyyətə başladığı bəyan edilirdi.<sup>8</sup> Lakin institusional asimmetriya (institutional asymmetry) və keçid iqtisadiyyatlarının formal-qeyri-rəsmi uyğunsuzluqlarını tədqiq edən nəzəriyyələr çərçivəsində bu rəqəmlərin anatomiyası tamamilə fərqli bir iqtisadi reallığı ortaya qoyur.<sup>2</sup> Rəqəmlərin nominal olaraq yüksək olması, vətəndaşların xüsusi mülkiyyətindən, azad rəqabətdən, innovasiyadan və ya qlobal bazarlara inteqrasiyadan qaynaqlanmırdı. Bu iqtisadi həcm birbaşa mərkəzi büdcə transfertlərinə, kütləvi dövlət xərclərinə, qapalı subsidiyalara və çox məhdud, hökumətə yaxın qrupların inhisarında olan tikinti, təchizat və istehsal layihələrinə əsaslanırdı.</p>
+
+    <p>Bu mühitdə ən böyük zərbə insan kapitalına və sahibkar psixologiyasına vurulmuşdur. "Keçid iqtisadiyyatı psixologiyası"nın (transition economy psychology) ən neqativ elementləri qabarıq şəkildə inkişaf etmişdir. Sahibkarlıq anlayışı təşəbbüskarlıq, bazar boşluqlarını tapmaq və risk almaq funksiyalarından məhrum edilərək, "dövlətdən lisenziya və ya pay almaq", "renta axtarışı" (rent-seeking) və passiv icraçılıq səviyyəsinə endirilmişdi.<sup>1</sup> İnvestisiya davranışı iqtisadi rasionalizmə, rəqabət üstünlüyünə deyil, sırf siyasi loyalığa, icazə mexanizmlərinə və görünməz sərhədlərə riayət etməyə indekslənmişdi. Bazar münasibətləri dərin deformasiyaya uğramış, özəl təşəbbüslər mərkəzi idarəetmənin qeyri-rəsmi olaraq müəyyən etdiyi "icazə verilmiş fəaliyyət kvoataları" daxilində sıxışdırılmışdı. Nəticədə, intellektual və maliyyə kapitalına malik olan yerli vətəndaşlar öz vəsaitlərini və ideyalarını Naxçıvanda reallaşdırmaqdan qorxmuş, vəsaitlərini ya tamamilə dondurmuş, ya da qeyri-rəsmi yollarla regiondan – xüsusilə Türkiyəyə və Azərbaycanın mərkəzi şəhərlərinə çıxarmağa məcbur olmuşlar. İqtisadi passivlik sadəcə tənbəllik və ya bacarıqsızlıq deyil, aqressiv və qeyri-proqnozlaşdırıla bilən risklərə qarşı cəmiyyətin təbii, bioloji bir müdafiə mexanizmi kimi formalaşmışdı.<sup>4</sup></p>
+
+    <h3 class="subsection-title" id="s2b">"Şifahi Tapşırıq İqtisadiyyatı" və Onun Çoxşaxəli Fəsadları</h3>
+
+    <p>Naxçıvanın keçmiş iqtisadi paradiqmasının idarəetmə xarakterini anlamaq üçün "şifahi siqnal iqtisadiyyatı" anlayışının dərk edilməsi mütləqdir. Bu termin, müasir qanunların, rəsmi qaydaların, dövlət proqramlarının və konstitusion hüquqların kağız üzərində mövcudluğuna rəğmən, real iqtisadi qərarların, kapital hərəkətlərinin, yoxlamaların, inhisar icazələrinin və bazara giriş hüquqlarının rəsmi sənədlərlə deyil, müstəsna olaraq qeyri-rəsmi, yazılmamış və şifahi tapşırıqlar əsasında idarə edilməsi mexanizmini ifadə edir. Post-sovet məkanındakı, eləcə də Qafqaz və Mərkəzi Asiya regionlarındakı keçid iqtisadiyyatlarının tranzaksiya mühitini tədqiq edən qlobal elmi araşdırmalar sübut edir ki, rəsmi institutların fəaliyyət qabiliyyətini itirməsi və qeyri-rəsmi əlaqələrin (managerial ties and informal networks) mütləq dominantlıq təşkil etməsi davamlı iqtisadi inkişafı mümkünsüz edir və innovasiyanı boğur.<sup>3</sup> Şifahi siqnal iqtisadiyyatının Naxçıvandakı spesifik fəsadları dörd əsas struktur oxu üzrə qruplaşdırıla və təhlil edilə bilər:</p>
+
+    <ul class="numbered-list">
+      <li>
+        <div class="item-content">
+          <span class="item-title">Bank kreditlərinə və maliyyəyə təsir edən qeyri-rəsmi münasibətlər</span>
+          Rəsmi hesabatlarda iqtisadiyyata on milyonlarla manat (məsələn, 2021-ci ildə 31 milyon manat<sup>8</sup>) kreditin yönəldildiyi bəyan edilsə də, bu vəsaitlərin iqtisadiyyata ötürülməsi prosesi klassik risk menecmentinə əsaslanmırdı. Kreditin ayrılması üçün girovun iqtisadi dəyəri və biznes planın mükəmməlliyi deyil, subyektin aid olduğu iyerarxiya, verilmiş şifahi zəmanətlər və idarəetmə aparatı ilə bağlılıq həlledici rol oynayırdı. Bu institusional asimmetriya müstəqil Kiçik və Orta Bizneslərin (KOB) maliyyəyə çıxışını bağlayır, bank sektorunu isə yalnız seçilmiş layihələrin xəzinədarlığına çevirirdi.
+        </div>
+      </li>
+      <li>
+        <div class="item-content">
+          <span class="item-title">Vergi yoxlamaları və dərin psixoloji risklər</span>
+          Vergi, gömrük və sanitariya tənzimləmələri klassik fiskal siyasət, rəqabəti tənzimləmə və keyfiyyətə nəzarət aləti olmaqdan çıxaraq, inzibati cəzalandırma, rəqibləri bazardan təmizləmə və ya xərac toplama alətinə çevrilmişdi. Bir sahibkar qanunvericiliyin bütün tələblərinə mükəmməl şəkildə riayət etsə belə, şifahi şəkildə formalaşdırılmış "görünməz sərhədləri" (məsələn, müəyyən bir məhsulun yalnız müəyyən bir şirkət tərəfindən idxal edilməsi kimi yazılmamış qaydalar) keçdikdə dərhal aqressiv vergi və yoxlama terroru ilə üzləşəcəyini bilirdi. Bu daimi qorxu halı biznes subyektlərində böyümə istəyini yox edirdi; çünki "böyümək" diqqət çəkmək və nəticədə əlindən alınmaq riski daşıyırdı.
+        </div>
+      </li>
+      <li>
+        <div class="item-content">
+          <span class="item-title">İnvestorların qeyri-rəsmi risk qavrayışı (perception of risk)</span>
+          Xarici korporasiyalar və ya xaricdə kapital toplamış Azərbaycan diasporu üçün investisiya qərarlarında ən böyük maneə qanunvericilik bazasının zəifliyi deyildi. Əsas maneə, yerli administrasiyanın mülkiyyət hüquqlarına və toxunulmazlığa nə dərəcədə hörmət edəcəyinin tamamilə qeyri-müəyyən olması idi. Formal hüquqi institutların bir telefon zəngi və ya şifahi qərarla anında ləğv edilə bilməsi ssenarisi, mütləq kapital qaçışına səbəb olurdu. Qanunların tətbiqindəki ikili standartlar (informal institutions overruling formal ones) etimadı dərindən zədələmişdi.<sup>2</sup>
+        </div>
+      </li>
+      <li>
+        <div class="item-content">
+          <span class="item-title">"İqtisadi anomiya" və sahibkarların davranış psixologiyası</span>
+          İqtisadi anomiya sosiologiyada və institusional iqtisadiyyatda köhnə ənənəvi qaydaların, institutların dağıldığı, lakin yenilərinin hələ tam oturuşmadığı normativsizlik vəziyyətini ifadə edir.<sup>5</sup> Şifahi siqnal iqtisadiyyatında sahibkar mühiti daimi bir anomiya yaşayır. Belə vəziyyətdə təşəbbüskarlıq, risk, araşdırma-inkişaf yatırımları yerini gizlənmə, passivlik və konyunkturanı izləmə mövqeyinə verir. İnvestisiyalar istehsalat, sənaye, texnologiya kimi uzunmüddətli, geri dönüşü illər çəkən, qaçırılması və likvidasiyası çətin olan sahələrə deyil, daha qısamüddətli, likvid, daşınmaz əmlak, ticarət və ya xidmət sektoruna yönəlir. Çünki sənaye obyekti hər an ələ keçirilə bilər, lakin ticarət kapitalı sürətlə mobilizə oluna bilir.
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="page-sep"><div class="page-sep-line"></div><div class="page-sep-diamond">◆</div><div class="page-sep-line"></div></div>
+
+  <!-- ─── SECTION III ─── -->
+  <div class="section" id="s3">
+    <div class="section-header">
+      <span class="section-label">Üçüncü Bölmə</span>
+      <h2 class="section-title">Sovet Mirası Olan Sənaye və İstehsal Potensialı: Tarixi Baza və Modernizasiya Ssenariləri</h2>
+    </div>
+
+    <p>Naxçıvanın mövcud sənaye xəritəsi tarixi olaraq SSRİ dövründə Mərkəzi Planlaşdırma Komitəsinin (QOSPLAN) müəyyən etdiyi xüsusi ixtisaslaşma prinsiplərinə əsaslanaraq qurulmuşdur. Naxçıvan coğrafi cəhətdən təcrid olunmuş görünsə də, Sovet İttifaqının vahid dəmir yolu və logistika şəbəkəsinə sıx inteqrasiya edildiyi üçün yüksək rəqabətə davamlı mərkəz idi. Burada xammalın (istər yerli, istər SSRİ daxilindən gələn) dərin emalı və hazır məhsulun nəhəng ittifaq bazarına (Moskva, Leninqrad, Sibir) çıxarılması təmin edilirdi. Sovet dövründə on minlərlə insanın çalışdığı, güclü ənənələrə malik bu zavod və fabriklər son onilliklərdə ya tamamilə profilini dəyişmiş, ya istifadəsiz metal yığınına çevrilmiş, ya da çox aşağı (və ya mənfi) faizli marja ilə güclə fəaliyyətinə davam etmişdir. Bu müəssisələrin yenidən öyrənilməsi və onların dərin iqtisadi məqsədəuyğunluq (feasibility) analizinin aparılması Naxçıvanın sənaye renessansı üçün əvəzedilməz təməldir.</p>
+
+    <h3 class="subsection-title" id="s3a">Naxçıvanın Tarixi Sənaye Komplekslərinin Təhlili</h3>
+
+    <div class="sector-card">
+      <div class="sector-card-header">
+        <div class="sector-card-title">Ordubad İpək və Baramaaçma Sənayesi</div>
+        <div class="sector-job-badge">İş yeri potensialı: 400–500 nəfər</div>
+      </div>
+      <div class="sector-card-body">
+        <p>Ordubad bölgəsi tarixi olaraq Qafqazın ən mühüm ipəkçilik mərkəzlərindən biri olmuşdur. Sovet dövründə fəaliyyət göstərən Ordubad Baramaaçma Fabriki ildə 1000 tondan çox xam barama emal edən, yüksək keyfiyyətli xam ipək və ipək parçalar istehsal edən nəhəng bir kombinat idi. Burada əksəriyyəti qadınlar olmaqla 1500-dən çox daimi işçi çalışırdı. Xammal tamamilə yerli tut bağlarından əldə edilirdi. Mövcud vəziyyətdə fabrik infrastruktur olaraq dağılmışdır və bu miqyasda kütləvi istehsal Asiya (Çin, Hindistan) bazarları ilə rəqabət apara bilməz.</p>
+        <div class="modernization-block">
+          <span class="mod-label">Modernizasiya Ssenarisi</span>
+          <p>Müəssisənin kütləvi istehsaldan "boutique" (butik) və premium ipək istehsalına keçirilməsi lazımdır. İtaliyanın Komo bölgəsi və ya Türkiyənin Bursa tekstil klasterləri ilə "joint-venture" (birgə müəssisə) qurularaq əl işi, eksklüziv naxışlı orqanik ipək istehsalına başlana bilər. Özəl investisiya cəlbi ilə Avropa lüks tekstil bazarına çıxış təmin edilə bilər.</p>
+        </div>
+        <div style="margin-top:12px">
+          <span class="sector-tag">Lüks Moda</span>
+          <span class="sector-tag">İtaliya / Türkiyə JV</span>
+          <span class="sector-tag">Yüksək dəyər / Aşağı həcm</span>
+          <span class="sector-tag">Avropa ixracı</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sector-card">
+      <div class="sector-card-header">
+        <div class="sector-card-title">Konserv və Aqro-Emal Müəssisələri (Ordubad və Şərur)</div>
+        <div class="sector-job-badge">İş yeri potensialı: 600–800 nəfər</div>
+      </div>
+      <div class="sector-card-body">
+        <p>Ordubadın şaftalı, ərik, qoz və Şərur düzünün pomidor, meyvə-tərəvəz potensialı Sovet dövründə nəhəng konserv zavodlarını bəsləyirdi. İldə on milyonlarla şərti banka istehsal olunaraq uzaq şimal bölgələrinə göndərilirdi. Yüzlərlə insan məşğul idi. Hazırda bu müəssisələr köhnəlmiş və ya bəsit qablaşdırma texnologiyaları ilə yalnız məhdud daxili bazar üçün işləyir.</p>
+        <div class="modernization-block">
+          <span class="mod-label">Modernizasiya Ssenarisi</span>
+          <p>Qlobal qida sənayesi şüşə və tənəkə qablardan daha yüngül, ekoloji təmiz aseptik qablaşdırmaya və quru/dondurulmuş qidaya keçib. Bu müəssisələrin xüsusi investisiya vasitəsilə IQF (Individual Quick Freezing — Şok dondurma) və "Freeze-drying" (donduraraq qurutma) texnologiyaları ilə təchiz edilməsi məqsədəuyğundur. Xüsusilə Avropa və Körfəz ölkələrində orqanik Qafqaz meyvələrinə böyük tələbat var.</p>
+        </div>
+        <div style="margin-top:12px">
+          <span class="sector-tag">Şok Dondurma</span>
+          <span class="sector-tag">Freeze-Drying</span>
+          <span class="sector-tag">PPP Modeli</span>
+          <span class="sector-tag">Orqanik Avropa / Körfəz Bazarı</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sector-card">
+      <div class="sector-card-header">
+        <div class="sector-card-title">Heyvandarlıq Əsaslı Sənaye: Süd, Ət Emalı və Dəri Zavodları</div>
+        <div class="sector-job-badge">İş yeri potensialı: 800–1200 nəfər</div>
+      </div>
+      <div class="sector-card-body">
+        <p>Naxçıvanda ənənəvi kənd təsərrüfatı sahələrindən olan heyvandarlıq sənaye üçün güclü daxili xammal bazası formalaşdırır. Tarixən fəaliyyət göstərmiş və ya hazırda da potensialı olan ət-süd sənayesi müəssisələrinin yenidən canlandırılması iqtisadiyyat üçün kritik əhəmiyyətə malikdir. Müasir dövrdə yeni tipli avadanlıqların quraşdırılması sayəsində bu müəssisələrdə ildə minlərlə ton ekoloji təmiz yağ, pendir, qatıq, xama və digər süd məhsullarının istehsalı potensialı mövcuddur.</p>
+        <div class="modernization-block">
+          <span class="mod-label">Modernizasiya Ssenarisi</span>
+          <p>İnkişaf yalnız qida sənayesi (süd və süd məhsulları, ət və ət məhsulları) ilə məhdudlaşmamalıdır. Əlavə olaraq heyvandarlığın birbaşa yan məhsulu olan xam dərinin və yunun dərin emalı üçün müasir dəri emalı zavodları (tannery) və yun-iplik fabrikləri fəaliyyətini bərpa etməli və ya yenidən qurulmalıdır. Xam dərinin ucuz qiymətə satılması əvəzinə, Naxçıvanda ayaqqabı, lüks dəri aksesuarları (çanta, kəmər) və xalçaçılıq sənayesi ilə inteqrasiya olunmuş "sıfır tullantı heyvandarlıq klasteri" yaradıla bilər. İtaliya və ya Türkiyənin aparıcı brendləri ilə "outsourcing" və birgə istehsal modeli əsasında əməkdaşlıq qlobal bazarlara ixrac perspektivi yaradır.</p>
+        </div>
+        <div style="margin-top:12px">
+          <span class="sector-tag">Sıfır Tullantı Klasteri</span>
+          <span class="sector-tag">Dəri Emalı</span>
+          <span class="sector-tag">Lüks Aksesuar</span>
+          <span class="sector-tag">İtaliya / Türkiyə Outsourcing</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sector-card">
+      <div class="sector-card-header">
+        <div class="sector-card-title">Elektrotexnika, Maşınqayırma və Radiator Zavodları (Naxçıvan şəhəri)</div>
+        <div class="sector-job-badge">İş yeri potensialı: 300–450 nəfər</div>
+      </div>
+      <div class="sector-card-body">
+        <p>Naxçıvan şəhərində fəaliyyət göstərmiş Elektrotexnika Zavodu, Metal Emalı və Radiator zavodları SSRİ məkanında minlərlə müəssisə üçün elektrik mühərrikləri, ehtiyat hissələri, transformator komponentləri və alüminium/çuqun radiatorlar təmin edirdi. Burada 2000-dən çox mühəndis və usta çalışırdı. Bu zavodların məhsulları bütün Sovet İttifaqı daxilində tam rəqabətli idi. Hazırda bu nəhəng "brownfield" (qəhvəyi sahə) obyektləri istifadəsizdir.</p>
+        <div class="modernization-block">
+          <span class="mod-label">Modernizasiya Ssenarisi</span>
+          <p>Klassik sovet radiatoru və ya mühərriki dövrü bitib. Lakin mövcud anbar və zavod infrastrukturu yeni dövrün texnologiyalarına adaptasiya edilə bilər. Naxçıvanın günəş enerjisi potensialını nəzərə alaraq, bu zavodlar asanlıqla Günəş panelləri üçün alüminium çərçivələrin istehsalı, yüngül metal konstruksiyalar, külək turbinləri üçün kiçik ehtiyat hissələri və ya "OEM" (Orijinal Avadanlıq İstehsalçısı) əsasında qlobal avtomobil sənayesi (Türkiyə bazarı) üçün xırda ehtiyat hissələrinin istehsalı üzrə ixtisaslaşa bilər.</p>
+        </div>
+        <div style="margin-top:12px">
+          <span class="sector-tag">Günəş Paneli Karkasları</span>
+          <span class="sector-tag">OEM Hissələr</span>
+          <span class="sector-tag">Türkiyə Bazarı</span>
+          <span class="sector-tag">Yaşıl Enerji</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sector-card">
+      <div class="sector-card-header">
+        <div class="sector-card-title">Tikinti Materialları İstehsalı (Şahtaxtı Travertin və Mərmər)</div>
+        <div class="sector-job-badge">İş yeri potensialı: 500–700 nəfər</div>
+      </div>
+      <div class="sector-card-body">
+        <p>Naxçıvan zəngin təbii daş resurslarına malikdir. Sovet dövründə buradan hasil edilən travertin və mərmər Moskva metrosunun və bir çox önəmli dövlət binalarının tikintisində istifadə edilmişdir. Hazırda fəaliyyət göstərsə də, sektor inhisarlaşmışdır və qlobal bazarlara çıxışdan daha çox yerli və qismən regional tikintilərə yönəlmişdir. Dərin emal yoxdur, daşlar çox vaxt xam bloklar şəklində ucuz qiymətə çıxarılır.</p>
+        <div class="modernization-block">
+          <span class="mod-label">Modernizasiya Ssenarisi</span>
+          <p>Tam azad rəqabətə əsaslanan mədən konsessiyaları verilə bilər. İtaliya texnologiyası tətbiq edilərək "sıfır tullantı" (zero-waste) prinsipi ilə işləyən dərin emal mərkəzləri qurulması məqsədəuyğun olar. Çıxan toz və qırıntılardan müasir memarlıqda yüksək dəyəri olan epoksi-mərmər kompozitləri (süni daş) istehsal edilə bilər. Avropa və Türkiyə tikinti bazarlarına ixrac perspektivi genişdir.</p>
+        </div>
+        <div style="margin-top:12px">
+          <span class="sector-tag">Sıfır Tullantı</span>
+          <span class="sector-tag">Epoksi Kompozit</span>
+          <span class="sector-tag">Qlobal İnşaat Sektoru</span>
+          <span class="sector-tag">İtaliya Texnologiyası</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sector-card">
+      <div class="sector-card-header">
+        <div class="sector-card-title">Tütün Emalı və Kənd Təsərrüfatı</div>
+        <div class="sector-job-badge">İş yeri potensialı: 200–300 nəfər</div>
+      </div>
+      <div class="sector-card-body">
+        <p>Şərur və Kəngərli düzlərində geniş ərazilər sovet dövründə kütləvi tütün əkini və emalı üçün istifadə edilirdi. Hazırda bu sənaye çökmüşdür və torpaqlar əsasən taxılçılığa yönləndirilib ki, bu da su qıtlığı şəraitində rasional deyil.</p>
+        <div class="modernization-block">
+          <span class="mod-label">Modernizasiya Ssenarisi</span>
+          <p>Naxçıvanın torpaq və iqlimi çox nadirdir. Tütün sənayesinin əvvəlki emal infrastrukturu və əkin sahələri tamamilə alternativ, çox yüksək əlavə dəyəri olan sahələrə – sənaye miqyasında zəfəran, tibbi marixuana (Avropa əczaçılıq sənayesi üçün xüsusi lisenziya ilə qapalı istehsal), lavanda, gül yağı və kosmetologiya xammalı yetişdirilməsinə transformasiya edilməlidir. İxrac perspektivi Avropa və Şimali Amerikadır.</p>
+        </div>
+        <div style="margin-top:12px">
+          <span class="sector-tag">Zəfəran</span>
+          <span class="sector-tag">Tibbi Xammal</span>
+          <span class="sector-tag">Əczaçılıq Sektoru</span>
+          <span class="sector-tag">Çox Yüksək ROI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sector-card">
+      <div class="sector-card-header">
+        <div class="sector-card-title">Xalçaçılıq, Yüngül Sənaye və Mebel</div>
+        <div class="sector-job-badge">İş yeri potensialı: 500–1000 nəfər (evdən fəaliyyət daxil)</div>
+      </div>
+      <div class="sector-card-body">
+        <p>Keçmişdə regionda kütləvi tekstil və xalçaçılıq istehsalı mövcud idi. Hazırda kiçik miqyaslı sənətkarlıq səviyyəsinə enmişdir.</p>
+        <div class="modernization-block">
+          <span class="mod-label">Modernizasiya Ssenarisi</span>
+          <p>Müasir qlobal "B2B" (Business-to-Business) modelinə keçilməlidir. Naxçıvan xalçaları xarici bazarda lüks interyer dizaynı şirkətləri üçün xüsusi sənaye sifarişləri (outsourcing modeli) əsasında toxunmalıdır. Qadın məşğulluğunu təmin edən bu sahə tamamilə rəqəmsallaşmalı və elektron ticarət (E-commerce) platformalarına inteqrasiya edilməlidir.</p>
+        </div>
+        <div style="margin-top:12px">
+          <span class="sector-tag">B2B Modeli</span>
+          <span class="sector-tag">Lüks İnteryer</span>
+          <span class="sector-tag">E-Commerce</span>
+          <span class="sector-tag">Qadın Məşğulluğu</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sector-card">
+      <div class="sector-card-header">
+        <div class="sector-card-title">Mineral Su və Qida Sənayesi (Badamlı, Sirab, Darıdağ)</div>
+        <div class="sector-job-badge">Əlavə iş yeri potensialı: 300+ nəfər</div>
+      </div>
+      <div class="sector-card-body">
+        <p>Naxçıvan suları SSRİ dövründə ən məşhur sağlamlıq brendləri idi. Hazırda aktivdirlər və modernləşdiriliblər. Lakin qlobal miqyaslanma prosesi ləng gedir.</p>
+        <div class="modernization-block">
+          <span class="mod-label">Modernizasiya Ssenarisi</span>
+          <p>Yalnız su satışı deyil, sağlamlıq turizmi və "wellness" mərkəzləri ilə inteqrasiya edilməsi, xüsusilə Darıdağ arsenli suyu əsasında dərman kosmetologiyası (məlhəmlər, termal spreylər) sənayesi yaradılması yüksək perspektiv vəd edir. Yaradılacaq sənayenin qlobal əczaçılıq şirkətləri ilə əməkdaşlığı təşkil oluna bilər.</p>
+        </div>
+        <div style="margin-top:12px">
+          <span class="sector-tag">Wellness Turizmi</span>
+          <span class="sector-tag">Dərman Kosmetologiyası</span>
+          <span class="sector-tag">Əczaçılıq Əməkdaşlığı</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="subsection-title" id="s3b">Sənaye Potensialı Üzrə Xülasə və Cəlb Ediləcək Mexanizmlər</h3>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>İstehsal sektoru</th>
+            <th>SSRİ dövrü istehsal modeli</th>
+            <th>Mövcud status</th>
+            <th>Təklif olunan investisiya modeli</th>
+            <th>İxrac perspektivi və səmərəlilik</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>İpəkçilik</td>
+            <td>Kütləvi xammal istehsalı</td>
+            <td>Dağılmış, fəaliyyətsiz</td>
+            <td>İtaliya/Türkiyə ilə JV butik istehsal</td>
+            <td>Lüks moda, Yüksək dəyər/Aşağı həcm</td>
+          </tr>
+          <tr>
+            <td>Aqro-emal / Konserv</td>
+            <td>Ağır qablaşdırma, daxili SSRİ</td>
+            <td>Yarı-aktiv, köhnə texnologiya</td>
+            <td>Şok dondurma və Freeze-drying PPP</td>
+            <td>Orqanik Avropa/Körfəz qida bazarı</td>
+          </tr>
+          <tr>
+            <td>Maşınqayırma / Radiator</td>
+            <td>Bütün SSRİ üçün kütləvi detal</td>
+            <td>Zavodlar passiv/boş (Brownfield)</td>
+            <td>Günəş paneli karkasları, OEM hissələr</td>
+            <td>Türkiyə və Yaşıl enerji şirkətləri</td>
+          </tr>
+          <tr>
+            <td>Tikinti Materialları</td>
+            <td>Blok halında çıxarılma</td>
+            <td>İnkişaf etmiş, lakin inhisarçı</td>
+            <td>Sıfır tullantı, Epoksi kompozit istehsalı</td>
+            <td>Qlobal inşaat sektoru, Orta gəlirlilik</td>
+          </tr>
+          <tr>
+            <td>Sənaye Əkinçiliyi</td>
+            <td>Kütləvi tütün və pambıq</td>
+            <td>Dondurulmuş və ya qeyri-effektiv</td>
+            <td>Əczaçılıq/Kosmetika xammalı (Zəfəran)</td>
+            <td>Avropa Əczaçılıq sektoru, Çox yüksək ROI</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-card">
+      <p>Bu tarixi sənaye ocaqlarının canlandırılması prosesində dövlət heç bir halda "zavod direktoru" rolunda çıxış etməməlidir. Dövlət yalnız bu obyektləri "Brownfield" (qəhvəyi sahə) investisiya paketləri kimi formalaşdırmalı, vergi və gömrük rüsumlarından azad xüsusi iqtisadi zonalar statusu verməli və beynəlxalq audit vasitəsilə tam şəffaf hərraclarda özəl xarici və yerli investorlara təqdim etməlidir.</p>
+    </div>
+  </div>
+
+  <div class="page-sep"><div class="page-sep-line"></div><div class="page-sep-diamond">◆</div><div class="page-sep-line"></div></div>
+
+  <!-- ─── SECTION IV ─── -->
+  <div class="section" id="s4">
+    <div class="section-header">
+      <span class="section-label">Dördüncü Bölmə</span>
+      <h2 class="section-title">Naxçıvanın Regional İqtisadi Potensial Xəritəsi: Qlobal Bazarlara İnteqrasiya</h2>
+    </div>
+
+    <p>Naxçıvan Muxtar Respublikasının coğrafi mövqeyi (blokada və eksklav vəziyyəti) və məhdud demoqrafiyası ənənəvi, ağır və logistika tələb edən sənayelərin inkişafını qeyri-mümkün edir. "Kiçik regionların iqtisadi miqyaslanması" (small-region economic scaling) konsepsiyası tələb edir ki, Naxçıvan fiziki həcmi kiçik, çəkisi yüngül, lakin əlavə dəyəri və intellektual xarakteri yüksək olan sahələrə sıçrayış (leapfrogging) etsin.</p>
+
+    <h3 class="subsection-title" id="s4a">Sektorların Detallı Təhlili</h3>
+
+    <h4 class="sub-subsection-title">1. İT və Rəqəmsal Xidmətlər (BPO və Outsourcing)</h4>
+
+    <p>Rəqəmsal xidmətlər sektoru coğrafi blokadanı tamamilə anlamsız edən yeganə sahədir. Qlobal Business Process Outsourcing (BPO) və proqramlaşdırma bazarının həcmi trilyon dollara yaxınlaşır. Naxçıvan bu bazardan kiçik bir pay almaqla regionun gəlirlərini qatlayaraq artıra bilər.</p>
+
+    <div class="section-card">
+      <ul class="bullet-list">
+        <li><strong>Xammal Bazası və Məşğulluq:</strong> Bu sektorun yeganə xammalı gənc insan beyni və sürətli internetdir. Gənclərin "bootcamp"lar vasitəsilə 6 aylıq intensiv kodlaşdırma və xarici dil təlimlərinə cəlb edilməsi kütləvi məşğulluq yarada bilər.</li>
+        <li><strong>İnvestisiya Ehtiyacı:</strong> Çox aşağıdır. Ofis məkanları (Co-working), kompüterlər və beynəlxalq mentorların dəvəti kifayətdir.</li>
+        <li><strong>Risklər:</strong> Ən böyük risk öyrədilmiş mütəxəssislərin yüksək maaş dalınca Bakıya və ya xaricə miqrasiya etməsidir (Brain drain).</li>
+        <li><strong>Müqayisə və Həll:</strong> Estoniya modeli. Naxçıvanda qeydiyyatdan keçən proqramçılar üçün vergi dərəcəsi 0% olmalı, dövlət onlara pulsuz ofis şəraiti verməlidir ki, fiziki olaraq Naxçıvanda qalıb Avropa, ABŞ bazarları üçün işləsinlər.</li>
+      </ul>
+    </div>
+
+    <h4 class="sub-subsection-title">2. Günəş Enerjisi və Yaşıl İqtisadiyyat (Renewables)</h4>
+
+    <div class="section-card">
+      <ul class="bullet-list">
+        <li><strong>Bazar Ölçüsü və Potensial:</strong> Naxçıvan ildə orta hesabla 280–300 günəşli günə və yüksək radiasiya səviyyəsinə malikdir. Bu, nəinki regionun bütün daxili enerji tələbatını yaşıl enerji ilə ödəməyə, həm də Zəngəzur dəhlizi, Türkiyə və İran vasitəsilə region ölkələrinə elektrik enerjisi ixrac etməyə imkan verir.</li>
+        <li><strong>İnvestisiya Ehtiyacı və Logistika:</strong> Çox yüksək (Ağır kapital qoyuluşu). Panellərin idxalı logistik xərclər yaradır. Lakin uzunmüddətli perpsektivdə panellərin məhz Naxçıvanda yığılması (assembly) sənayesi qurula bilər.</li>
+        <li><strong>Risklər:</strong> Enerji infrastrukturunun köhnəliyi və qonşu dövlətlərlə elektrik şəbəkələrinin sinxronizasiyası problemləri.</li>
+      </ul>
+    </div>
+
+    <h4 class="sub-subsection-title">3. Sağlamlıq Turizmi və Ekoloji Turizm (Wellness &amp; Eco-Tourism)</h4>
+
+    <div class="section-card">
+      <ul class="bullet-list">
+        <li><strong>Xammal Bazası:</strong> Duzdağ Fizioterapiya Mərkəzi (astma xəstəliklərinin müalicəsi üçün unikal məkan), Darıdağ termal suları, Batabat və Göygöl ekoloji turizm zonaları.</li>
+        <li><strong>Bazar və İxrac:</strong> Qlobal tibbi və sağlamlıq turizmi bazarı 100 milyardlarla dollarla ölçülür. Duzdağ yalnız regional deyil, qlobal bir brend ola bilər.</li>
+        <li><strong>Regional Müqayisə və Həll:</strong> İsrailin Ölü Dəniz (Dead Sea), Çexiyanın Karlovy Vary və Almaniyanın Baden-Baden modelləri tətbiq edilməlidir. Tibbi personalın beynəlxalq sertifikasiyası həyata keçirilməli, xarici sığorta şirkətləri ilə Duzdağın paketləri sinxronlaşdırılmalıdır.</li>
+      </ul>
+    </div>
+
+    <h4 class="sub-subsection-title">4. Aqro-Emal və İxracyönümlü Mikro Sənaye</h4>
+
+    <div class="section-card">
+      <ul class="bullet-list">
+        <li><strong>Bazar və logistika:</strong> Badam, qoz, bal, dərman bitkiləri, zəfəran, meyvə quruları. Bunlar hava yolu və ya elektron ticarət kargosu ilə ixrac edilə biləcək, qramı bahalı, özü yüngül məhsullardır.</li>
+        <li><strong>Məşğulluq və investisiya:</strong> Çoxsaylı ailə təsərrüfatları vahid bir kooperativ ətrafında birləşdirildikdə kütləvi məşğulluq yaranır. İlkin investisiya yalnız modern qablaşdırma (packaging) aparatlarına və beynəlxalq ISO/HACCP sertifikatlarına lazımdır.</li>
+      </ul>
+    </div>
+
+    <h4 class="sub-subsection-title">5. Logistika, Tranzit və "Dry Port" (Quru Liman) Qovşağı</h4>
+
+    <div class="section-card">
+      <ul class="bullet-list">
+        <li><strong>Potensial:</strong> Qars-İğdır-Naxçıvan dəmir yolu layihəsinin tamamlanması və "Orta Dəhliz"in (Middle Corridor) aktivləşməsi fonunda Naxçıvan passiv eksklavdan Şərq-Qərb tranzitində aktiv "quru liman"a çevrilir. Çindən Avropaya gedən yüklərin Naxçıvanda anbarlanması, yenidən qablaşdırılması və rəsmiləşdirilməsi nəhəng bir gömrük və logistika iqtisadiyyatı formalaşdıracaq.</li>
+      </ul>
+    </div>
+
+    <h3 class="subsection-title" id="s4b">Sektor-Prioritet Matrisi və İqtisadi Həssaslıq</h3>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Sektor</th>
+            <th>İnvestisiya ehtiyacı</th>
+            <th>Məşğulluq potensialı</th>
+            <th>İxrac dəyəri (logistik asılılıq)</th>
+            <th>Prioritet dərəcəsi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>İT və rəqəmsal xidmətlər</td>
+            <td>çox aşağı</td>
+            <td>yüksək (gənc və ixtisaslı)</td>
+            <td>çox yüksək (logistikadan asılı deyil)</td>
+            <td><span class="priority-mutleq">mütləq prioritet</span></td>
+          </tr>
+          <tr>
+            <td>Sağlamlıq turizmi</td>
+            <td>orta</td>
+            <td>yüksək (xidmət sektoru)</td>
+            <td>yüksək (birbaşa uçuşlardan asılı)</td>
+            <td><span class="priority-yuksek">yüksək prioritet</span></td>
+          </tr>
+          <tr>
+            <td>Aqro-emal (premium)</td>
+            <td>orta</td>
+            <td>çox yüksək (ailə təsərrüfatı)</td>
+            <td>orta-yüksək (kargo asılılığı)</td>
+            <td><span class="priority-mutleq">mütləq prioritet</span></td>
+          </tr>
+          <tr>
+            <td>Günəş enerjisi (ixrac)</td>
+            <td>çox yüksək</td>
+            <td>aşağı (quraşdırmadan sonra)</td>
+            <td>yüksək (şəbəkədən asılı)</td>
+            <td><span class="priority-yuksek">yüksək prioritet</span></td>
+          </tr>
+          <tr>
+            <td>Ağır sənaye / maşınqayırma</td>
+            <td>çox yüksək</td>
+            <td>orta</td>
+            <td>aşağı (yüksək tranzit xərcləri)</td>
+            <td><span class="priority-asagi">aşağı prioritet</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="page-sep"><div class="page-sep-line"></div><div class="page-sep-diamond">◆</div><div class="page-sep-line"></div></div>
+
+  <!-- ─── SECTION V ─── -->
+  <div class="section" id="s5">
+    <div class="section-header">
+      <span class="section-label">Beşinci Bölmə</span>
+      <h2 class="section-title">Beynəlxalq Təcrübənin Müqayisəli Təhlili və Naxçıvana Tətbiq İmkanları</h2>
+    </div>
+
+    <p>Naxçıvanın gələcək iqtisadi paradiqması abstrak Qərb nəzəriyyələrindən daha çox, demoqrafik, coğrafi və sosioloji baxımdan oxşar məhdudiyyətləri aşıb sıçrayış edə bilmiş "öyrənilmiş reallıqlar" üzərində qurulmalıdır.</p>
+
+    <div class="comparison-card">
+      <div class="comparison-flag">Türkiyə</div>
+      <div class="comparison-content">
+        <div class="comparison-title">1. Anadolu Sənaye Şəhərləri (Kayseri, Qaziantep, Konya) Modeli</div>
+        <p>Türkiyənin iqtisadi ədəbiyyatında "Anadolu Pələngləri" (Anatolian Tigers) adlandırılan bu şəhərlərin inkişaf xarakteri Naxçıvan üçün ən yaxın sosioloji modeldir. Bu şəhərlər 1980-ci illərə qədər mərkəzi büdcədən məhrum, dənizə çıxışı olmayan, kənd təsərrüfatına məhkum regionlar idi. Onların qlobal ixracatçılara çevrilməsinin səbəbi dövlət subsidiyaları deyildi. Əsas səbəb ənənəvi "etibar şəbəkələrinə" (trust networks) əsaslanan yerli investorların və ailə şirkətlərinin birləşərək güclü Ticarət Odaları və Mütəşəkkil Sənaye Zonaları (OSB) qurması idi.</p>
+        <div class="lesson-box">
+          <span class="lesson-label">Naxçıvan üçün alınacaq dərs</span>
+          <p>Mərkəzləşdirilmiş sistemin yıxdığı "Sahibkar Koordinasiya Mexanizmi" yenidən qurulmalıdır. Kayseridə olduğu kimi, bir-birinə güvənən yerli sahibkarlar rəqabəti daxildə deyil, birləşərək xaricə qarşı aparmalıdır.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="comparison-card">
+      <div class="comparison-flag">Gürcüstan</div>
+      <div class="comparison-content">
+        <div class="comparison-title">2. Gürcüstan İnvestisiya və İslahat Modeli (2004–2012)</div>
+        <p>Gürcüstan post-sovet məkanında dərin anomiya, korrupsiya və bürokratik ləngimədən radikal şəkildə çıxmış yeganə ölkə nümunəsidir. Onların inkişafının sirri "qanunları yazmaqda" deyil, lisenziyaları və yoxlamaları ləğv etməkdə idi. "Tənzimləyici Gilotin" (Regulatory Guillotine) metodu ilə icazə və lisenziyaların 80%-i ləğv edildi, vergilər minimuma endirildi.</p>
+        <div class="lesson-box">
+          <span class="lesson-label">Naxçıvan üçün alınacaq dərs</span>
+          <p>Naxçıvan bu keçid dövründən sürətlə çıxmaq və digər regionlara nəzərən iqtisadi ləngiməni aradan qaldırmaq üçün mütləq belə bir cəsarətli modeli tətbiq etməlidir: Bürokratik qorxunu yenməyin tək yolu məmurun sahibkarla təmasını elektronlaşdırmaq və ya tam kəsməkdir.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="comparison-card">
+      <div class="comparison-flag">Estoniya</div>
+      <div class="comparison-content">
+        <div class="comparison-title">3. Estoniya Rəqəmsal Sahibkarlıq Modeli</div>
+        <p>Təbii ehtiyatları olmayan, soyuq iqlimə və cəmi 1.3 milyon əhaliyə malik Estoniya xilası rəqəmsallaşmada tapdı. "E-Residency" proqramı və 100% rəqəmsal dövlət konsepti ilə qlobal İT şirkətlərini ölkəyə cəlb etdi. Naxçıvan Estoniyanın mərkəzsizləşdirilmiş server modelini, tam kağızsız idarəetməni və yenidən investisiya edilən mənfəətdən 0% vergi tutulması praktikasını tam təkrarlaya bilər.</p>
+      </div>
+    </div>
+
+    <div class="comparison-card">
+      <div class="comparison-flag">İsrail</div>
+      <div class="comparison-content">
+        <div class="comparison-title">4. İsrail Regional İnnovasiya Modeli</div>
+        <p>İsrail iqtisadi coğrafiyasının çətinlikləri (düşmən qonşularla əhatə olunma, təcrid, su və torpaq qıtlığı) Naxçıvanın eksklav həyatı ilə ciddi bənzərliklər daşıyır. İsrailin çıxış yolu aqrotex (damcı suvarma) və kibertəhlükəsizlik kimi intensiv bilik tələb edən, logistikası sadə olan sahələrə investisiya etmək oldu. İsrailin "Kibbutz" modeli (icma əsaslı ortaq aqro-istehsalat və kooperativ) Naxçıvanın kənd təsərrüfatı üçün yeganə çıxış yolu kimi görünür.</p>
+      </div>
+    </div>
+
+    <div class="comparison-card">
+      <div class="comparison-flag">Balkanlar</div>
+      <div class="comparison-content">
+        <div class="comparison-title">5. Balkan Keçid İqtisadiyyatları</div>
+        <p>Müharibə və avtoritarizmdən çıxmış Balkan regionlarının (Bosniya, Şimali Makedoniya) post-münaqişə iqtisadi bərpa ssenariləri göstərir ki, belə ərazilərdə ən böyük risk miqrasiya və insan resursunun itirilməsidir.<sup>2</sup></p>
+        <div class="lesson-box">
+          <span class="lesson-label">Naxçıvan üçün alınacaq dərs</span>
+          <p>Naxçıvanın Avropa, Rusiya və Türkiyədəki geniş diasporunu geri qaytarmaq üçün Balkanlarda tətbiq edilən "Diaspor İstiqrazları" (Diaspora Bonds) və etimad fondları mexanizmi yaradılmalıdır.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-sep"><div class="page-sep-line"></div><div class="page-sep-diamond">◆</div><div class="page-sep-line"></div></div>
+
+  <!-- ─── SECTION VI ─── -->
+  <div class="section" id="s6">
+    <div class="section-header">
+      <span class="section-label">Altıncı Bölmə</span>
+      <h2 class="section-title">Naxçıvan üçün "Özəl Sahibkarlıq İqtisadiyyatı" Modeli</h2>
+    </div>
+
+    <p>Yuxarıda qeyd edilən fəlsəfi yanaşmaların və beynəlxalq nümunələrin Naxçıvanın reallıqlarına uyğunlaşdırılması ilə yeni iqtisadi model yaradılması mütləqdir. Bu modelin mərkəzində dövlətin "mane olmayan rol modeli" (non-interventionalist enabler) durur. Dövlət yalnız və yalnız üç şeyi təmin edir: müasir infrastruktur, mülkiyyət toxunulmazlığını təmin edən qanunun aliliyi və ədalətli rəqabət mühiti. Digər bütün iqtisadi qərarlar, qiymət siyasəti və istehsal strukturu bazarın "görünməz əl"inə buraxılır (Adam Smitin nəzəriyyəsi).</p>
+
+    <p>Bu model daxilində sahibkar koordinasiya mexanizmi xüsusi yer tutur. Naxçıvanın kiçik bazarı və pərakəndə istehsalçıları qlobal bazarlara çıxa bilməz. Buna görə "Əməkdaşlıq Əsaslı İqtisadiyyat" və "Ortaq İstehsal və Logistika Modeli" qurulmalıdır. Məsələn, 20 fərqli alma və ya qoz istehsalçısı ayrı-ayrılıqda bahalı qablaşdırma avadanlığı almır, ayrılıqda xarici bazara maşın göndərmir. Yaradılmış regional sahibkar şəbəkələri daxilində səhmdar cəmiyyət kimi vahid emal, anbarlama və logistika mərkəzi (Co-op) qurulur. Beləliklə, iqtisadiyyat miqyaslanır, rəqabətədavamlılıq artır və əməliyyat xərcləri kəskin şəkildə aşağı düşür. Eyni zamanda, Naxçıvanın diaspor investisiya modeli sırf maliyyə ötürücüsü olmamalıdır; diaspor özü ilə qlobal iş mədəniyyətini, yeni texnologiyaları və qlobal təchizat şəbəkələrinə (supply chains) çıxışı Naxçıvana gətirməlidir.</p>
+  </div>
+
+  <div class="page-sep"><div class="page-sep-line"></div><div class="page-sep-diamond">◆</div><div class="page-sep-line"></div></div>
+
+  <!-- ─── SECTION VII ─── -->
+  <div class="section" id="s7">
+    <div class="section-header">
+      <span class="section-label">Yeddinci Bölmə</span>
+      <h2 class="section-title">"InvestInNakhchivan" Platformasının Tam Yeni Konsepsiyası</h2>
+    </div>
+
+    <p>İnvestisiya etimadsızlığını sındırmaq, informasiya asimmetriyasını aradan qaldırmaq və qlobal kapitalı Naxçıvana bağlamaq üçün sıradan bir tanıtım veb-saytı yox, yüksək texnologiyalı, şəffaf, 24/7 işləyən rəqəmsal körpü yaradılmalıdır. Bu platforma mürəkkəb B2B (Business-to-Business) və B2G (Business-to-Government) ekosistemi olmalıdır.</p>
+
+    <div class="platform-feature">
+      <div class="platform-dot"></div>
+      <div class="platform-feature-content">
+        <h4>Platforma Strukturu və İnvestisiya Dashboard-u</h4>
+        <p>Portalın ana interfeysi real vaxt rejimində (real-time) dəyişən makroiqtisadi göstəriciləri, azad iqtisadi zonalardakı boş sahələri (o cümlədən istifadəyə yararlı sahələri, tikililəri, anbarları və s.), enerji qiymətlərini və vergi dərəcələrini göstərən bir idarəetmə panelinə malik olmalıdır.</p>
+      </div>
+    </div>
+
+    <div class="platform-feature">
+      <div class="platform-dot"></div>
+      <div class="platform-feature-content">
+        <h4>Data Əsaslı İnteraktiv Xəritə</h4>
+        <p>Dövlət Statistika Komitəsi, Gömrük və Vergi xidmətlərinin API-ləri ilə birbaşa inteqrasiya olunmuş məlumat bazası. İnteraktiv (GIS) xəritədə investor Naxçıvanın istənilən nöqtəsinə klikləyərək oradakı su resurslarını, yeraltı sərvətləri, iqlim məlumatlarını, logistika yollarına uzaqlığını və boş sənaye binalarını (Brownfield) vizual olaraq görə biləcək.</p>
+      </div>
+    </div>
+
+    <div class="platform-feature">
+      <div class="platform-dot"></div>
+      <div class="platform-feature-content">
+        <h4>"İnvestor Marketplace" Modeli</h4>
+        <p>Bu, portalın ən inqilabi funksiyasıdır. Yerli bir Naxçıvanlı sahibkar öz ideyasını (məsələn, modern əczaçılıq xammalı sexi) platformaya yükləyir. Platformanın ekspertləri bu ideyanı "Pitch-deck" və vizual "Layihə Kartı" (Project Card) halına salır. Layihədə tələb olunan investisiya (məsələn, $500.000) və gözlənilən ROI (Return on Investment — qoyulan investisiyadan gözlənilən mənfəət, kapitalın geri dönüşü) göstərilir. Xaricdəki investorlar "Amazon"dan məhsul alırmış kimi, bu layihələrə səhmdar qismində baxa və investisiya edə bilərlər (Crowdfunding və ya Venture Capital modeli. Paşa Holdingin "GetKickBox" layihəsi nümunə kimi tətbiq oluna bilər).</p>
+      </div>
+    </div>
+
+    <div class="platform-feature">
+      <div class="platform-dot"></div>
+      <div class="platform-feature-content">
+        <h4>İnvestor Uyğunlaşdırma Sistemi (Matchmaking) və "Diaspora" Paneli</h4>
+        <p>Süni intellekt əsaslı alqoritm investorun maraq dairəsi ilə (məsələn: Yaşıl enerji) Naxçıvandakı müvafiq layihələri qarşılaşdırır. Xüsusi bağlanmış "Diaspora" panelində qlobal bazarlardakı Naxçıvanlı iş adamlarının platformada bir-biri ilə VİP şəbəkələşməsi təmin edilir.</p>
+      </div>
+    </div>
+
+    <div class="platform-feature">
+      <div class="platform-dot"></div>
+      <div class="platform-feature-content">
+        <h4>Uğur Hekayələri</h4>
+        <p>İqtisadi sosiologiyada qorxu psixologiyasının yeganə dərmanı "sübut"dur. Sistem işə düşdükdən sonra risk edib qazanan ilk yerli və xarici investorların hekayələri mütəmadi olaraq peşəkar sənədli filmlər kimi platformada yayımlanmalıdır.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-sep"><div class="page-sep-line"></div><div class="page-sep-diamond">◆</div><div class="page-sep-line"></div></div>
+
+  <!-- ─── SECTION VIII ─── -->
+  <div class="section" id="s8">
+    <div class="section-header">
+      <span class="section-label">Səkkizinci Bölmə</span>
+      <h2 class="section-title">Praktiki Fəaliyyət Planı (Roadmap) və Əsas Göstəricilər (KPI)</h2>
+    </div>
+
+    <p>Transformasiyanın uğuru nəzəriyyələrin mövcudluğunda deyil, onların praktik, ölçülə bilən və vaxta bağlı icrasındadır. Aşağıdakı strategiya mərhələli inkişafı təmin edir:</p>
+
+    <!-- Phase 1 -->
+    <div class="roadmap-phase">
+      <div class="roadmap-phase-header">
+        <div class="roadmap-phase-name">Böhranın İdarə Edilməsi və Etimadın Bərpası</div>
+        <div class="roadmap-phase-time">İlk 30 gün</div>
+        <div class="roadmap-phase-goal">Fəaliyyət Mərhələsi</div>
+      </div>
+      <div class="roadmap-phase-body">
+        <div class="roadmap-actions">
+          <h4>Strateji Hədəflər &amp; İcra Mexanizmləri</h4>
+          <ul>
+            <li>"Təcili Etimad Bərpası" paketi çərçivəsində hökumət, KOB təmsilçiləri və diaspor arasında geniş, senzurasız "İqtisadi şura"nın qurulması.</li>
+            <li>"Şifahi siqnal iqtisadiyyatı"nın dərhal qadağan olunması və bütün qeyri-rəsmi yoxlamalara mütləq moratorium (təxirəsalma) elan edilməsi.</li>
+            <li>Yerli sahibkarlar üçün amnistiya və cərimələrin silinməsi təşəbbüsü.</li>
+          </ul>
+        </div>
+        <div class="roadmap-output">
+          <h4>Gözlənilən Nəticə</h4>
+          <p>Psixoloji rahatlaşma, investor panikasinın dayandırılması, cəmiyyətdə yeni rəhbərliyə etimad.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="roadmap-phase">
+      <div class="roadmap-phase-header">
+        <div class="roadmap-phase-name">İnstitusional Təməllərin Qurulması</div>
+        <div class="roadmap-phase-time">İlk 90 gün</div>
+        <div class="roadmap-phase-goal">Fəaliyyət Mərhələsi</div>
+      </div>
+      <div class="roadmap-phase-body">
+        <div class="roadmap-actions">
+          <h4>Strateji Hədəflər &amp; İcra Mexanizmləri</h4>
+          <ul>
+            <li>"Invest in Nakhchivan" platformasının ilkin (BETA) versiyasının buraxılışı.</li>
+            <li>Mövcud lisenziya və icazə prosedurlarının Gürcüstan modeli əsasında "gilotin"lə minimum 50% ixtisarı təşəbbüsü.</li>
+            <li>Sovet dövrü sənaye obyektlərinin tam inventarizasiyası və özəlləşdirmə qovluqlarının (brownfield) hazırlanması.</li>
+          </ul>
+        </div>
+        <div class="roadmap-output">
+          <h4>Gözlənilən Nəticə</h4>
+          <p>Bürokratik yükün yüngülləşməsi, xarici investisiya üçün vizual vitrinin yaranması.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="roadmap-phase">
+      <div class="roadmap-phase-header">
+        <div class="roadmap-phase-name">Qanunvericilik və Təşəbbüs Sıçrayışı</div>
+        <div class="roadmap-phase-time">İlk 6 ay</div>
+        <div class="roadmap-phase-goal">Fəaliyyət Mərhələsi</div>
+      </div>
+      <div class="roadmap-phase-body">
+        <div class="roadmap-actions">
+          <h4>Strateji Hədəflər &amp; İcra Mexanizmləri</h4>
+          <ul>
+            <li>Naxçıvanda xüsusi İT və Rəqəmsal Azad Zonasının qanunvericilik bazasının qəbulu barədə "qanunvericilik təşəbbüsü".</li>
+            <li>İlk 5 böyük PPP (Public-Private Partnership) sənaye layihəsinin beynəlxalq hərraca çıxarılması.</li>
+            <li>Gömrük-logistika zəncirində tam rəqəmsal "Yaşıl Dəhliz"in (E-customs) tətbiqi.</li>
+          </ul>
+        </div>
+        <div class="roadmap-output">
+          <h4>Gözlənilən Nəticə</h4>
+          <p>Gömrük tranzit sürətinin artması, ilk böyük xarici kapitalın cəlbi cəhdləri.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 4 -->
+    <div class="roadmap-phase">
+      <div class="roadmap-phase-header">
+        <div class="roadmap-phase-name">Ekosistemin Tam Formasiyası</div>
+        <div class="roadmap-phase-time">İlk 12 ay</div>
+        <div class="roadmap-phase-goal">Fəaliyyət Mərhələsi</div>
+      </div>
+      <div class="roadmap-phase-body">
+        <div class="roadmap-actions">
+          <h4>Strateji Hədəflər &amp; İcra Mexanizmləri</h4>
+          <ul>
+            <li>Regional İnvestor Şəbəkəsinin və "Mələk İnvestorlar" (Angel Investors) klubunun fəaliyyətə başlaması.</li>
+            <li>Yerli sənaye kooperativlərinin (ortaq aqro-anbar, emal mərkəzləri) fəaliyyətə başlaması.</li>
+            <li>Qlobal PR şirkətləri ilə Duzdağ və sağlamlıq turizmi konseptinin tanıdılması.</li>
+          </ul>
+        </div>
+        <div class="roadmap-output">
+          <h4>Gözlənilən Nəticə</h4>
+          <p>Xarici investisiya həcminin statistik ölçülə bilən artımı, turizm axınının başlaması.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 5 -->
+    <div class="roadmap-phase">
+      <div class="roadmap-phase-header">
+        <div class="roadmap-phase-name">Struktur Transformasiya</div>
+        <div class="roadmap-phase-time">3 il</div>
+        <div class="roadmap-phase-goal">Fəaliyyət Mərhələsi</div>
+      </div>
+      <div class="roadmap-phase-body">
+        <div class="roadmap-actions">
+          <h4>Strateji Hədəflər &amp; İcra Mexanizmləri</h4>
+          <ul>
+            <li>Naxçıvanın ixracında qeyri-ənənəvi sektorların (İT xidmətləri, premium aqro-emal) payının dominantlıq təşkil etməsi.</li>
+            <li>Enerji ehtiyacının ən azı 30%-nin yeni qurulmuş Günəş stansiyalarından təmin edilməsi.</li>
+            <li>Ali təhsil müəssisələri ilə sənaye (Triple Helix model) arasında R&amp;D əlaqələrinin qurulması.</li>
+          </ul>
+        </div>
+        <div class="roadmap-output">
+          <h4>Gözlənilən Nəticə</h4>
+          <p>Yaşıl enerjiyə qismən keçid, intellektual xidmət ixracatçısına çevrilmə.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 6 -->
+    <div class="roadmap-phase">
+      <div class="roadmap-phase-header">
+        <div class="roadmap-phase-name">Tam İqtisadi Müstəqillik</div>
+        <div class="roadmap-phase-time">5 il</div>
+        <div class="roadmap-phase-goal">Fəaliyyət Mərhələsi</div>
+      </div>
+      <div class="roadmap-phase-body">
+        <div class="roadmap-actions">
+          <h4>Strateji Hədəflər &amp; İcra Mexanizmləri</h4>
+          <ul>
+            <li>Naxçıvanın "Orta Dəhliz"in aktiv logistika mərkəzi və quru limanı kimi fəaliyyəti.</li>
+            <li>Özəl sektorun ÜDM-dəki payının mərkəzi büdcə subsidiyalarını geridə qoyması.</li>
+            <li>Cənubi Qafqazda "Doing Business" göstəriciləri üzrə ən cəlbedici lokal mikro-regiona çevrilməsi.</li>
+          </ul>
+        </div>
+        <div class="roadmap-output">
+          <h4>Gözlənilən Nəticə</h4>
+          <p>Mərkəzi büdcədən asılılığın minimuma enməsi, dayanıqlı və sərbəst iqtisadiyyat.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">Əsas Performans İndikatorları (KPI) Üzrə Hədəflər</h3>
+    <p>Bu strategiyanın real nəticələri konkret rəqəmlərlə ölçülməlidir:</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-number">40<span class="kpi-unit">%</span></div>
+        <span class="kpi-label">KOB Artımı</span>
+        <div class="kpi-desc">İlk 12 ayın sonunda qeydiyyata alınan və tamamilə müstəqil (dövlət tenderlərinə bağlı olmayan, sırf bazar üçün işləyən) fəaliyyət göstərən KOB sayında minimum 40% artım.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-number">500<span class="kpi-unit">mln $</span></div>
+        <span class="kpi-label">Xarici İnvestisiya (FDI)</span>
+        <div class="kpi-desc">3 il ərzində minimum 500 milyon USD dəyərində xarici və xüsusilə diaspor mənşəli birbaşa xarici investisiyanın (FDI) region iqtisadiyyatına cəlbi.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-number">15.000</div>
+        <span class="kpi-label">Yeni İş Yeri</span>
+        <div class="kpi-desc">5 illik müddətdə yalnız inşaat və dövlət sektorunda deyil, sırf istehsal, rəqəmsal İT və xidmət sektorlarında davamlı, rəqabətli maaşlı minimum 15.000 yeni iş yerinin yaradılması.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-number">3×</div>
+        <span class="kpi-label">İxrac Portfeli Dəyişimi</span>
+        <div class="kpi-desc">5-ci ilin sonunda Naxçıvanın ixrac portfelində emal edilmiş sənaye və intellektual məhsullarının payının xammal və kənd təsərrüfatı satışı həcmini minimum 3 dəfə üstələməsi.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-number">75<span class="kpi-unit">%</span></div>
+        <span class="kpi-label">Özəl Sektorun ÜDM Payı</span>
+        <div class="kpi-desc">Mövcud inhisarçı istehsal modelindən fərqli olaraq, 5-ci ilin sonunda Naxçıvan ÜDM-də xalis özəl sektor payının 75%-ə çatması.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-sep"><div class="page-sep-line"></div><div class="page-sep-diamond">◆</div><div class="page-sep-line"></div></div>
+
+  <!-- ─── SECTION IX ─── -->
+  <div class="section" id="s9">
+    <div class="section-header">
+      <span class="section-label">Doqquzuncu Bölmə</span>
+      <h2 class="section-title">SWOT Analiz və Strateji Risk İdarəetməsi</h2>
+    </div>
+
+    <p>Hər bir ciddi və texnokratik strateji sənəd təkcə nikbin hədəfləri deyil, həm də ən qaranlıq məqamları, neqativ ehtimalları realistik şəkildə qəbul etməli və onlara qarşı qabaqlayıcı mexanizmlər qurmalıdır. Dərin institusional transformasiyalar həmişə köhnə sistemin daxili müqaviməti (rezistentliyi) ilə qarşılaşır.</p>
+
+    <h3 class="subsection-title">Strateji SWOT Analizi</h3>
+
+    <div class="swot-grid">
+      <div class="swot-cell strengths">
+        <span class="swot-label">Güclü Tərəflər (Strengths)</span>
+        <ul>
+          <li>Regionda cinayətkarlığın aşağı olması, təhlükəsizlik və sabitliyin yüksək səviyyəsi.</li>
+          <li>Zəngin təbii mineral ehtiyatlar (müalicəvi sular, duz, sənaye daşı).</li>
+          <li>İllik çox yüksək günəş radiasiyası və alternativ enerji potensialı.</li>
+          <li>Türkiyə və İrana birbaşa coğrafi çıxışın olması.</li>
+          <li>Maliyyə və intellektual resurslara malik geniş xarici diaspor.</li>
+        </ul>
+      </div>
+      <div class="swot-cell weaknesses">
+        <span class="swot-label">Zəif Tərəflər (Weaknesses)</span>
+        <ul>
+          <li>Coğrafi blokada şəraiti və kiçik daxili bazar problemi (small-market limitation).</li>
+          <li>İqtisadi təşəbbüskarlıq vərdişlərinin kortalması, ictimai psixologiyada dərin passivlik.</li>
+          <li>İxtisaslı insan resursu çatışmazlığı, mütəxəssislərin bölgəni tərk etməsi.</li>
+          <li>Xarici bazarlara çıxışda tranzit və nəqliyyat xərclərinin çox yüksək olması.</li>
+        </ul>
+      </div>
+      <div class="swot-cell opportunities">
+        <span class="swot-label">İmkanlar (Opportunities)</span>
+        <ul>
+          <li>Zəngəzur dəhlizinin açılması ehtimalı ilə qlobal Şərq-Qərb logistika xəttinə tam hüquqlu qoşulma.</li>
+          <li>Rəqəmsal iqtisadiyyatın inkişafı (fiziki sərhədlərin tamamilə mənasını itirməsi).</li>
+          <li>Köhnə sistemin ləğvi nəticəsində "sıfırdan başlama" və qabaqcıl modelləri (greenfield) maneəsiz tətbiq etmə imkanı.</li>
+        </ul>
+      </div>
+      <div class="swot-cell threats">
+        <span class="swot-label">Təhdidlər (Threats)</span>
+        <ul>
+          <li>Köhnə idarəetmə reflekslərinin orta səviyyəli bürokratiya daxilində gizli yaşamağa davam etməsi.</li>
+          <li>Təmizlənmiş inhisar mühitinin yenidən fərqli qruplar tərəfindən monopoliyalaşdırılması riski.</li>
+          <li>Regiondakı geosiyasi qeyri-müəyyənliklər və qonşu dövlətlərlə sərhəd gərginlikləri.</li>
+          <li>Struktur bank problemləri səbəbindən KOB-ların ucuz kapitala çıxış qıtlığı.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">Risk Analizi və Həll Ssenariləri</h3>
+
+    <div class="risk-item">
+      <div class="risk-header">
+        <div class="risk-num">1</div>
+        <div class="risk-title-block"><h4>Korrupsiya Riskləri və Köhnə İdarəetmə Refleksləri</h4></div>
+      </div>
+      <div class="risk-body">
+        <div class="risk-problem">
+          <span class="risk-col-label">Risk</span>
+          <p>Ən böyük təhdidlərdən biri ali siyasi iradənin islahat yönümlü olmasına rəğmən, orta və aşağı səviyyəli bürokratiyada (middle-management) qeyri-rəsmi rüşvət, süni ləngitmə və ya maneə reflekslərinin qalmasıdır.</p>
+        </div>
+        <div class="risk-solution">
+          <span class="risk-col-label">Mitigasiya Strategiyası</span>
+          <p>Tam avtomatlaşdırılmış elektron hökumət və blokçeyn əsaslı icazə sistemləri qurulmalıdır. Hədəf, hər hansı bir icazə verən məmurla sahibkar arasındakı fiziki və səsli təması mütləq sıfıra endirməkdir.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="risk-item">
+      <div class="risk-header">
+        <div class="risk-num">2</div>
+        <div class="risk-title-block"><h4>Monopoliyalaşma Riski</h4></div>
+      </div>
+      <div class="risk-body">
+        <div class="risk-problem">
+          <span class="risk-col-label">Risk</span>
+          <p>Dövlət inhisarı ortadan qalxdıqdan sonra daxili bazarın böyük korporativ və ya siyasi gücə malik bir neçə özəl qrup tərəfindən ələ keçirilməsi təhlükəsi mövcuddur.</p>
+        </div>
+        <div class="risk-solution">
+          <span class="risk-col-label">Həll Strategiyası</span>
+          <p>Sərt "Antiinhisar və təqabət məcəlləsi"nin dərhal və amansız tətbiqi həyata keçirilməlidir. Heç bir şirkətə xüsusi idxal/ixrac kvotaları verilməməli, KOB-lar üçün mərkəzi bank və xarici fondlar tərəfindən subsidiyalaşdırılmış müstəqil kredit xətləri açılmalıdır.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="risk-item">
+      <div class="risk-header">
+        <div class="risk-num">3</div>
+        <div class="risk-title-block"><h4>İnsan Resursu Problemi və Miqrasiya (Brain Drain)</h4></div>
+      </div>
+      <div class="risk-body">
+        <div class="risk-problem">
+          <span class="risk-col-label">Risk</span>
+          <p>Yeni iqtisadiyyat ağıllı beyinlər tələb edir, lakin Naxçıvanda istedadlı gənclər ali təhsildən sonra daha yaxşı şərait üçün Bakıya, Türkiyəyə və ya Avropaya üz tuturlar. Bu hal sənayeni mütəxəssissiz qoyur.</p>
+        </div>
+        <div class="risk-solution">
+          <span class="risk-col-label">Həll Strategiyası</span>
+          <p>"Geri qayıdış" (Reverse brain-drain) proqramı işə salınmalıdır. Gənc peşəkarlar üçün xüsusi və çox ucuz ipoteka şərtləri təklif edilməli, Naxçıvanda fəaliyyət göstərən İT və sənaye şirkətlərinə əmək haqqı fondundan tutulan vergilərdə güzəştlər edilməlidir ki, gənclərə Avropa / Bakı standartında rəqabətli maaşlar verə bilsinlər.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="risk-item">
+      <div class="risk-header">
+        <div class="risk-num">4</div>
+        <div class="risk-title-block"><h4>Kiçik Bazar Problemi və Logistik Məhdudiyyətlər</h4></div>
+      </div>
+      <div class="risk-body">
+        <div class="risk-problem">
+          <span class="risk-col-label">Risk</span>
+          <p>Naxçıvanın əhalisinin azlığı və Zəngəzur dəhlizinin Ermənistan tərəfindən ləngidilməsi ənənəvi məhsulların ixracını bahalı edir.</p>
+        </div>
+        <div class="risk-solution">
+          <span class="risk-col-label">Həll Strategiyası</span>
+          <p>İqtisadiyyat tamamilə e-ticarət kimi fiziki logistikadan az asılı olan sektorlara (həcmi kiçik, dəyəri yüksək mallar) yönləndirilməli, Türkiyə və İran sərhədində birgə "Azad gömrük zonaları" yaradılaraq tranzit prosedurları sadələşdirilməlidir.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="risk-item">
+      <div class="risk-header">
+        <div class="risk-num">5</div>
+        <div class="risk-title-block"><h4>Geosiyasi Risklər</h4></div>
+      </div>
+      <div class="risk-body">
+        <div class="risk-problem">
+          <span class="risk-col-label">Risk</span>
+          <p>Bölgədə baş verə biləcək istənilən hərbi gərginlik investorların dərhal bölgədən uzaqlaşmasına gətirib çıxarır.</p>
+        </div>
+        <div class="risk-solution">
+          <span class="risk-col-label">Həll Strategiyası</span>
+          <p>Qlobal transmilli şirkətlərin bölgəyə cəlbi müdafiə qalxanı rolu oynaya bilər. Beynəlxalq konsorsiumların iştirakı ilə reallaşan layihələr Naxçıvanın təhlükəsizlik qarantiyasını iqtisadi yolla gücləndirir.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SECTION X : CONCLUSION ─── -->
+  <div class="conclusion-section" id="s10">
+    <div class="conclusion-bg"></div>
+    <div class="conclusion-inner">
+      <span class="section-label">Onuncu Bölmə</span>
+      <h2 class="section-title">Nəticə və Tövsiyələr</h2>
+
+      <p>Naxçıvan Muxtar Respublikasının iqtisadi gələcəyi nə qədər çox mərkəzi Azərbaycan büdcəsindən transfertlər almasından və ya hansı nəhəng dövlət binalarının tikilməsindən deyil, öz daxilindəki məhdud potensialı nə qədər səmərəli, azad və şəffaf bir şəkildə kapitalizasiya edə bilməsindən asılıdır. Mərkəzləşdirilmiş komanda sistemi onilliklər ərzində iqtisadiyyatı inzibati qaydada, süni subsidiyalarla böyütməyə çalışmış, rəsmi sənədlərdə qüsursuz rəqəmsal inkişaf göstəriciləri əldə etsə də,<sup>8</sup> real həyatda cəmiyyətdə iqtisadi etimadı, müstəqil yaşama qabiliyyətini və azad sahibkarlıq instinktini tamamilə məhv etmişdir. Post-avtoritar tranzit mərhələsində olan bir iqtisadiyyat kimi,<sup>1</sup> Naxçıvan təcili olaraq subyektiv tapşırıqlara əsaslanan "şifahi siqnal iqtisadiyyatı"ndan institusional, qanuna tabe, proqnozlaşdırıla bilən və azad rəqabətə əsaslanan etimad iqtisadiyyatına sıçrayış etməlidir.</p>
+
+      <div class="strategic-theses">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:3px;color:var(--gold);margin-bottom:20px;text-transform:uppercase;">Əsas Strateji Tezislər</h3>
+
+        <div class="thesis-item">
+          <div class="thesis-num">◆</div>
+          <p class="thesis-text">İqtisadi inkişaf yuxarıdan-aşağıya (top-down) verilən əmrlərlə deyil, yalnız aşağıdan-yuxarıya (bottom-up) işləyən koordinasiyalı özəl təşəbbüslərlə baş tutmalıdır. Məmurlar bazarı idarə etməməli, bazar özünü idarə etməlidir.</p>
+        </div>
+        <div class="thesis-item">
+          <div class="thesis-num">◆</div>
+          <p class="thesis-text">SSRİ dövründən qalma irimiqyaslı, lakin istifadəsiz sənaye infrastrukturunun reanimasiyası, müasir dövrün tələblərinə uyğun PPP (Dövlət-Özəl tərəfdaşlıq) layihələri, sıfır tullantı texnologiyaları və xarici birgə müəssisələr vasitəsilə mümkündür.</p>
+        </div>
+        <div class="thesis-item">
+          <div class="thesis-num">◆</div>
+          <p class="thesis-text">Naxçıvanın coğrafi blokadadan qaynaqlanan logistik maneələri yalnız və yalnız rəqəmsal xidmətlər, IT outsourcing, premium yüngül aqro-emal və sağlamlıq turizmi kimi fiziki sərhəd tanımayan sektorların mütləq inkişafı ilə neytrallaşdırılmalıdır.</p>
+        </div>
+        <div class="thesis-item">
+          <div class="thesis-num">◆</div>
+          <p class="thesis-text">Naxçıvan diasporası regiona yalnız nostalji və vətənpərvərlik zəminində deyil, şəffaf rəqəmsal platformalar (InvestNakhchivan.com kimi) və rasional qazanc əldə etmək ehtimalı (ROI) zəminində, biznes tərəfdaşı kimi cəlb olunmalıdır.</p>
+        </div>
+      </div>
+
+      <div class="practical-recs">
+        <h3>Praktik İcra Üçün Önəmli Tövsiyələr</h3>
+
+        <div class="rec-item">
+          <div class="rec-num">1</div>
+          <p class="rec-text">Hökumət iqtisadi aktlardan, zavod idarəçiliyindən, qiymət tənzimləmələrindən tamamilə geri çəkilərək yalnız infrastruktur, xidmət və ədalətli arbitraj (tənzimləyici) roluna qayıtmalıdır.</p>
+        </div>
+        <div class="rec-item">
+          <div class="rec-num">2</div>
+          <p class="rec-text">Bütün dövlət satınalmaları, investisiya tenderləri və mədən lisenziyaları tam rəqəmsallaşdırılmalı, "qapalı qapılar" arxasından çıxarılaraq rəqəmsal platformalarda açıq, qlobal rəqabətə təqdim edilməlidir.</p>
+        </div>
+        <div class="rec-item">
+          <div class="rec-num">3</div>
+          <p class="rec-text">"Regional Sahibkar Şəbəkəsi" rəsmi olaraq formalaşdırılmalı, sahibkarlar arasında məlumat mübadiləsi, güvən formlaşdırılması, ortaq istehsalat kooperativlərinin qurulması və etimadın bərpası üçün rəsmi platformalar (İqtisadi Forumlar, İnvestisiya Sammitləri) mütəmadi təşkil edilməlidir.</p>
+        </div>
+        <div class="rec-item">
+          <div class="rec-num">4</div>
+          <p class="rec-text">Yeni gələn xarici və yerli investorlar üçün riskləri azaldacaq "10 illik toxunulmaz mülkiyyət və vergi proqnozlaşdırılabilənliyi zəmanəti" qanunvericiliklə təsdiqlənməli və hüquqi toxunulmazlıq ən yüksək səviyyədə bəyan edilməlidir.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:48px;padding:32px 40px;background:rgba(184,151,58,0.08);border:1px solid rgba(184,151,58,0.2);">
+        <p style="font-family:'EB Garamond',serif;font-size:18px;font-style:italic;color:rgba(245,240,232,0.9);text-align:center;margin:0;line-height:1.9;">Bu hərtərəfli yol xəritəsi emosional tənqiddən və populyar vədlərdən uzaq, sübutlara, beynəlxalq praktikaya və reallıqlara əsaslanan texnokratik bir idarəetmə metodologiyasıdır. Yeni iqtisadi sistemin təməl fəlsəfəsi inzibati qorxu yox, azad təşəbbüs, məhdud qrupların inhisarı yox, geniş əməkdaşlıq, qaranlıq şifahi idarəetmə yox, mütləq rəqəmsal şəffaflıq olmalıdır. Yalnız bu institusional mühitin səmimi və fasiləsiz təmin edildiyi təqdirdə Naxçıvan regionun iqtisadi və rəqəmsal mərkəzinə çevrilə bilər.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── REFERENCES ─── -->
+  <div class="references-section" id="s11">
+    <span class="section-label">İstinadlar</span>
+    <h2 class="section-title" style="font-size:18px;">İstinadlar</h2>
+    <ol class="ref-list">
+      <li>
+        <span class="ref-num">1.</span>
+        <span>Towards the regional aspects of institutional trust and entrepreneurial ecosystems, accessed May 20, 2026, <a href="https://centaur.reading.ac.uk/107483/" target="_blank">https://centaur.reading.ac.uk/107483/</a></span>
+      </li>
+      <li>
+        <span class="ref-num">2.</span>
+        <span>The rules of the game in transition: how informal institutions work in South East Europe — CISAR, accessed May 20, 2026, <a href="https://cisar.ba/wp-content/uploads/2022/12/2.-Palgrave-handbook-1.pdf" target="_blank">https://cisar.ba/wp-content/uploads/2022/12/2.-Palgrave-handbook-1.pdf</a></span>
+      </li>
+      <li>
+        <span class="ref-num">3.</span>
+        <span>Towards the regional aspects of institutional trust and entrepreneurial ecosystems — Emerald Publishing, accessed May 20, 2026, <a href="https://www.emerald.com/insight/content/doi/10.1108/IJEBR-02-2022-0108/full/html" target="_blank">https://www.emerald.com/insight/content/doi/10.1108/IJEBR-02-2022-0108/full/html</a></span>
+      </li>
+      <li>
+        <span class="ref-num">4.</span>
+        <span>Entrepreneurship in Transition Economies: The Role of Institutions and Generational Change, accessed May 20, 2026, <a href="https://d-nb.info/1001128842/34" target="_blank">https://d-nb.info/1001128842/34</a></span>
+      </li>
+      <li>
+        <span class="ref-num">5.</span>
+        <span>Informal institutions and radical ideologies under institutional transformation, accessed May 20, 2026, <a href="https://rujec.org/article/27947/" target="_blank">https://rujec.org/article/27947/</a></span>
+      </li>
+      <li>
+        <span class="ref-num">6.</span>
+        <span>Full article: Institutional ecosystems and inclusive entrepreneurship: evidence from Uzbekistan's transition economy — Taylor &amp; Francis, accessed May 20, 2026, <a href="https://www.tandfonline.com/doi/full/10.1080/23311975.2026.2621453" target="_blank">https://www.tandfonline.com/doi/full/10.1080/23311975.2026.2621453</a></span>
+      </li>
+      <li>
+        <span class="ref-num">7.</span>
+        <span>No Interaction, No Problem? An Investigation of Organizational Issues in the University–Industry–Government Triad in a Transition Economy — MDPI, accessed May 20, 2026, <a href="https://www.mdpi.com/2076-3387/14/10/246" target="_blank">https://www.mdpi.com/2076-3387/14/10/246</a></span>
+      </li>
+      <li>
+        <span class="ref-num">8.</span>
+        <span>Bu il Naxçıvanda ÜDM-in istehsalı 3 milyard manatdan çox olub — Publika.az, accessed May 20, 2026, <a href="https://publika.az/news/gundem/381129.html" target="_blank">https://publika.az/news/gundem/381129.html</a></span>
+      </li>
+      <li>
+        <span class="ref-num">9.</span>
+        <span>Mobilities, Boundaries, and Travelling Ideas — 7. Informal Trade and Globalization in the Caucasus and Post-Soviet Eurasia — OpenEdition Books, accessed May 20, 2026, <a href="https://books.openedition.org/obp/5841" target="_blank">https://books.openedition.org/obp/5841</a></span>
+      </li>
+      <li>
+        <span class="ref-num">10.</span>
+        <span>Informal Economies in the Post-Soviet Space: Post-Soviet Islam and Its Role in Ordering Entrepreneurship in Central Asia — ResearchGate, accessed May 20, 2026, <a href="https://www.researchgate.net/publication/323879885_Informal_Economies_in_the_Post-Soviet_Space_Post-Soviet_Islam_and_Its_Role_in_Ordering_Entrepreneurship_in_Central_Asia" target="_blank">https://www.researchgate.net/publication/323879885_Informal_Economies_in_the_Post-Soviet_Space_Post-Soviet_Islam_and_Its_Role_in_Ordering_Entrepreneurship_in_Central_Asia</a></span>
+      </li>
+    </ol>
+  </div>
+
+</div><!-- /document-body -->
+
+<script>
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Sidebar active dot
+  const sections = ['cover','toc','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11'];
+  const dots = document.querySelectorAll('.sidebar-dot');
+
+  window.addEventListener('scroll', () => {
+    let current = 0;
+    sections.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 200) current = i;
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  });
+</script>
+</body>
+</html>
