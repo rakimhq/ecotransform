@@ -3069,7 +3069,7 @@
       capital -= 50000;
       createFloatingText('Yanlış Mexanizm! -50,000 AZN', false);
       triggerBusinessShake();
-      problemDisplay.innerHTML = `<span style="color:#ef4444;">❌ Yanlış islahat seçimi! Məmurlar fürsətdən istifadə etdi.</span>`;
+      problemDisplay.innerHTML = `<span style="color:#ef4444;">❌ Yanlış seçim! Bəzi məmurlar inkişafa maneə yaratdı.</span>`;
     }
 
     updateMoneyUI();
@@ -3095,7 +3095,7 @@
         capital -= 50000;
         createFloatingText('ZƏRBƏ! -50,000 AZN', false);
         triggerBusinessShake();
-        problemDisplay.innerHTML = `<span style="color:#ef4444;">💥 Gecikdiniz! Problem biznesə birbaşa zərər vurdu.</span>`;
+        problemDisplay.innerHTML = `<span style="color:#ef4444;">💥 Gecikdiniz! Problem biznesi zərərə uğratdı.</span>`;
         
         updateMoneyUI();
         
@@ -3149,19 +3149,18 @@
     
     if (isWin) {
       overlay.innerHTML = `
-        <h3 class="overlay-title" style="color:#10b981">🏆 Qələbə! Azad Ekosistem Quruldu!</h3>
+        <h3 class="overlay-title" style="color:#10b981">🏆 Uğurlu Ekosistem Quruldu!</h3>
         <p class="overlay-text">
-          Təbrik edirik! Siz dövlət olaraq biznesə maneə törədən bütün problemləri ən doğru mexanizmlərlə və sürətlə kənarlaşdırdınız. 
-          Naxçıvan sahibkarları qlobal bazara çıxaraq hədəflənən 1 Milyon AZN büdcəyə çatdılar! İqtisadi transformasiya uğurla tamamlandı.
+        Təbrik edirik! Siz dövlət təmsilçisi olaraq maneələri vaxtında aradan qaldırdınız. Naxçıvan sahibkarı qlobal bazara çıxaraq ilk milyonunu qazana bildi! İqtisadi transformasiya uğurla tamamlandı..
         </p>
         <button class="start-btn" onclick="startGame()">Yenidən Oyna</button>
       `;
     } else {
       overlay.innerHTML = `
-        <h3 class="overlay-title" style="color:#ef4444">🛑 İflas! Bürokratik Çöküş!</h3>
+        <h3 class="overlay-title" style="color:#ef4444">🛑 Müəssisə iflas etdi!</h3>
         <p class="overlay-text">
-          Səhv mexanizmlərin tətbiqi və islahatlarda ləngimə səbəbindən bürokratik əngəllər, inhisar və qanunsuz yoxlamalar yerli biznesi məhv etdi. KOB krediti sıfırlandı. 
-          Unutmayın: Problemlərə doğru və anında müdaxilə etməsəniz iqtisadiyyat yaşaya bilməz.
+          Bürokratik maneələr, əsassız-yorucu yoxlamalar və inhisarçılıq yerli biznesi iflasa uğratdı. Biznes üçün verilmiş kredit də dəyər yaratmadan batdı. 
+          Unutmayın: Maneələri vaxtında aradan qaldırmasanız iqtisadiyyat böyüyə bilməz.
         </p>
         <button class="start-btn" onclick="startGame()">Səhvləri Düzəlt (Yenidən Başla)</button>
       `;
