@@ -118,9 +118,26 @@
   .paper-section h3 { font-size: 12pt; font-weight: bold; font-style: italic; margin-top: 20px; margin-bottom: 10px; }
   .paper-section p { font-size: 12pt; margin-bottom: 15px; text-indent: 30px; }
   
-  .paper-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 10pt; }
-  .paper-table th, .paper-table td { border: 1px solid #000; padding: 8px 12px; text-align: left; }
-  .paper-table th { font-weight: bold; text-align: center; }
+  .paper-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin: 20px 0; 
+    font-size: 10pt; 
+    table-layout: fixed; /* Cədvəlin enini konteynerə uyğun sabitləyir */
+    word-wrap: break-word; /* Uzun sözləri sətirdən qırır ki, cədvəli uzatmasın */
+  }
+  .paper-table th, .paper-table td { 
+    border: 1px solid #000; 
+    padding: 6px 8px; /* Daha çox mətn sığdırmaq üçün daxili boşluqlar azaldıldı */
+    text-align: left; 
+    vertical-align: top;
+    overflow-wrap: break-word;
+  }
+  .paper-table th { 
+    font-weight: bold; 
+    text-align: center; 
+    background-color: #f7f7f7; /* Başlıqların daha aydın seçilməsi üçün */
+  }
   
   .paper-refs { list-style: decimal inside; font-size: 10pt; }
   .paper-refs li { margin-bottom: 8px; text-indent: -20px; padding-left: 20px;}
@@ -3464,20 +3481,21 @@
     
     if (isWin) {
       overlay.innerHTML = `
-<h3 class="overlay-title" style="color:#10b981">🏆 Uğurlu ekosistem Quruldu!</h3>
+        <h3 class="overlay-title" style="color:#10b981">🏆 Qələbə! Azad Ekosistem Quruldu!</h3>
         <p class="overlay-text">
-        Təbrik edirik! Siz dövlət təmsilçisi olaraq maneələri vaxtında aradan qaldırdınız. Naxçıvan sahibkarı qlobal bazara çıxaraq ilk milyonunu qazana bildi! İqtisadi transformasiya uğurla tamamlandı..
+          Təbrik edirik! Siz dövlət olaraq biznesə maneə törədən bütün problemləri ən doğru mexanizmlərlə və sürətlə kənarlaşdırdınız. 
+          Naxçıvan sahibkarları qlobal bazara çıxaraq hədəflənən 1 Milyon AZN büdcəyə çatdılar! İqtisadi transformasiya uğurla tamamlandı.
         </p>
         <button class="start-btn" onclick="startGame()">Yenidən Oyna</button>
       `;
     } else {
       overlay.innerHTML = `
-        <h3 class="overlay-title" style="color:#ef4444">🛑 Müəssisə iflas etdi!</h3>
+        <h3 class="overlay-title" style="color:#ef4444">🛑 İflas! Bürokratik Çöküş!</h3>
         <p class="overlay-text">
-          Bürokratik maneələr, əsassız-yorucu yoxlamalar və inhisarçılıq yerli biznesi iflasa uğratdı. Biznes üçün verilmiş kredit də dəyər yaratmadan batdı. 
-          Unutmayın: Maneələri vaxtında aradan qaldırmasanız iqtisadiyyat böyüyə bilməz.
+          Səhv mexanizmlərin tətbiqi və islahatlarda ləngimə səbəbindən bürokratik əngəllər, inhisar və qanunsuz yoxlamalar yerli biznesi məhv etdi. KOB krediti sıfırlandı. 
+          Unutmayın: Problemlərə doğru və anında müdaxilə etməsəniz iqtisadiyyat yaşaya bilməz.
         </p>
-        <button class="start-btn" onclick="startGame()">Səhvləri düzəlt (yenidən başla)</button>
+        <button class="start-btn" onclick="startGame()">Səhvləri Düzəlt (Yenidən Başla)</button>
       `;
     }
   }
