@@ -1676,9 +1676,78 @@
     100% { opacity: 0; transform: translateY(-50px); }
   }
 
+  /* ══════════════════════════════════════════
+     RESPONSIVE / MOBILE UI OPTIMIZATION
+  ══════════════════════════════════════════ */
   @media (max-width: 768px) {
+    /* General layout */
+    .document-body { padding: 0 20px 60px; }
+    .sidebar-nav { display: none; } /* Hide on mobile to prevent content overlap */
+    
+    /* Cover Page Adjustments */
+    .cover-inner { padding: 40px 20px; }
+    .cover-title-az { font-size: 34px; margin-bottom: 16px; }
+    .cover-subtitle { font-size: 16px; margin-top: 16px; }
+    .cover-meta { flex-direction: column; gap: 20px; }
+    .cover-meta-dot { display: none; }
+    .cover-footer { flex-direction: column; gap: 15px; padding: 20px; text-align: center; }
+
+    /* TOC Adjustments */
+    .toc-page { padding: 40px 20px; }
+    .toc-title { font-size: 24px; }
+    .toc-list a { padding: 12px 10px; flex-wrap: wrap; }
+    .toc-text { font-size: 15px; }
+
+    /* Sections & Typography */
+    .section { padding: 50px 0 20px; }
+    .section-title { font-size: 22px; }
+    p { font-size: 16px; text-align: left; } /* Justify causes bad spacing on narrow screens */
+    .section-card { padding: 20px; margin: 20px 0; }
+    .highlight-block { padding: 30px 20px; }
+    .highlight-block p { font-size: 17px; }
+
+    /* Grids to Stack Vertically */
+    .swot-grid { grid-template-columns: 1fr; }
+    .roadmap-phase-header { grid-template-columns: 1fr; }
+    .roadmap-phase-name, .roadmap-phase-time, .roadmap-phase-goal { border-right: none; border-bottom: 1px solid rgba(184,151,58,0.2); }
+    .roadmap-phase-goal { border-bottom: none; }
+    .roadmap-phase-body { grid-template-columns: 1fr; padding: 20px; }
+    .risk-body { grid-template-columns: 1fr; }
+    .risk-problem { border-right: none; border-bottom: 1px solid var(--border-gold); }
+    
+    .conclusion-section { padding: 40px 20px; margin: 40px -20px 0; }
+    
+    .sector-card-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .comparison-card { flex-direction: column; }
+    .comparison-flag { writing-mode: horizontal-tb; transform: none; padding: 12px; border-right: none; border-bottom: 1px solid rgba(184,151,58,0.2); min-width: auto;}
+    .kpi-grid { grid-template-columns: 1fr; gap: 16px; margin: 20px 0; }
+
+    /* Tables */
+    table { font-size: 12px; }
+    thead th, tbody td { padding: 10px; }
+
+    /* Lists */
+    .numbered-list li { flex-direction: column; gap: 10px; }
+    .thesis-item { flex-direction: column; gap: 10px; padding: 16px; }
+    .platform-feature { flex-direction: column; gap: 12px; }
+    
+    /* Print Button */
+    .print-btn { bottom: 20px; right: 20px; padding: 10px 16px; }
+
+    /* Game / Simulation Mobile Optimizations */
+    .game-wrapper { padding: 20px 15px; margin: 20px 0; }
+    .game-header { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .game-stats { width: 100%; justify-content: space-between; gap: 10px; }
+    .stat-value { font-size: 18px; }
     .game-controls { grid-template-columns: 1fr; }
     .reform-btn { padding: 12px; font-size: 12px; }
+    .entrepreneur { width: 50px; height: 50px; font-size: 9px; bottom: 10px; }
+    .entrepreneur::before { font-size: 20px; margin-bottom: 2px; }
+    .obstacle-saw { font-size: 30px; bottom: 20px; }
+    .problem-banner { font-size: 14px; padding: 10px 15px; }
+    .overlay-title { font-size: 24px; }
+    .overlay-text { font-size: 14px; }
+    .start-btn { padding: 12px 20px; font-size: 13px; }
   }
 </style>
 </head>
@@ -1705,7 +1774,7 @@
 <button class="print-btn" onclick="window.print()">⊞ Çap / PDF</button>
 
 <!-- ╔══════════════════════════════════════════════╗ -->
-<!-- ║             COVER PAGE                       ║ -->
+<!-- ║              COVER PAGE                      ║ -->
 <!-- ╚══════════════════════════════════════════════╝ -->
 <div class="cover-page" id="cover">
   <div class="cover-bg-pattern"></div>
@@ -1756,7 +1825,7 @@
 </div>
 
 <!-- ╔══════════════════════════════════════════════╗ -->
-<!-- ║           TABLE OF CONTENTS                    ║ -->
+<!-- ║            TABLE OF CONTENTS                   ║ -->
 <!-- ╚══════════════════════════════════════════════╝ -->
 <div class="toc-page" id="toc">
   <div class="toc-header">
@@ -1786,7 +1855,7 @@
 </div>
 
 <!-- ╔══════════════════════════════════════════════╗ -->
-<!-- ║             DOCUMENT BODY                      ║ -->
+<!-- ║              DOCUMENT BODY                   ║ -->
 <!-- ╚══════════════════════════════════════════════╝ -->
 <div class="document-body">
 
@@ -2109,8 +2178,6 @@
 
     <h4 class="sub-subsection-title">1. İT və rəqəmsal xidmətlər (BPO və outsourcing)</h4>
 
-    <p>Rəqəmsal xidmətlər sektoru coğrafi blokadanı tamamilə anlamsız edən yeganə sahədir. Qlobal Business Process Outsourcing (BPO) və proqramlaşdırma bazarının həcmi bir trilyon dollara yaxınlaşır. Naxçıvan bu bazardan kiçik bir pay almaqla regionun gəlirlərini qatbaqat artıra bilər.</p>
-
     <div class="section-card">
       <ul class="bullet-list">
         <li><strong>Xammal bazası və məşğulluq:</strong> Bu sektorun yeganə xammalı gənc insan beyni və sürətli internetdir. Gənclərin "bootcamp"lar vasitəsilə 6 aylıq intensiv kodlaşdırma və xarici dil təlimlərinə cəlb edilməsi kütləvi məşğulluq yarada bilər.</li>
@@ -2137,7 +2204,7 @@
         <li><strong>Xammal bazası:</strong> Duzdağ Fizioterapiya Mərkəzi (astma xəstəliklərinin müalicəsi üçün unikal məkan), Darıdağ termal suları, Batabat və Göygöl ekoloji turizm zonaları.</li>
         <li><strong>Bazar və ixrac:</strong> Qlobal tibbi və sağlamlıq turizmi bazarı 100 milyardlarla dollarla ölçülür. Duzdağ yalnız regional deyil, qlobal bir brend ola bilər.</li>
         <li><strong>Regional müqayisə və həll:</strong> İsrailin Ölü Dəniz (Dead Sea), Çexiyanın Karlovy Vary və Almaniyanın Baden-Baden modellərinin/təcrübələrinin tətbiq olunması vacib şərtdir. Tibbi personalın beynəlxalq sertifikasiyası həyata keçirilməlidir.</li>
-        <li><strong>Gözardı edilən potensial:</strong> Həm Türkiyə, həm İran, həm də Ermənistanın Naxçıvanla həmsərhəd olduğu ərazilərin həmin ölkələrin daxilindəki turizm mərkəzi hesab olunan şəhərlərə uzaq məsafədə yerləşməsi və bölgə əhalisinin nisbətən aşağı gəlirli olması insanların öz ölkələri daxilində uzaq məsafələrə səyahət etməsini əlverişsiz edir. Bu isə həmin bölgələrin əhalisini Naxçıvanda formalaşdırılacaq turizm (ekoturimz, sağlamlıq turizmi, şəhər turizmi) infrstrukturu üçün potensial "müştərilər"ə çevirir.</li>
+        <li><strong>Gözardı edilən potensial:</strong> Həm Türkiyə, həm İran, həm də Ermənistanın Naxçıvanla həmsərhəd olduğu ərazilərin həmin ölkələrin daxilindəki turizm mərəzi hesab olunan şəhərlərə uzaq məsafədə yerləşməsi və bölgə əhalisinin nisbətən aşağı gəlirli olması insanların öz ölkələri daxilində uzaq məsafələrə səyahət etməsini əlverişsiz edir. Bu isə həmin bölgələrin əhalisini Naxçıvanda formalaşdırılacaq turizm (ekoturimz, sağlamlıq turizmi, şəhər turizmi) infrstrukturu üçün potensial "müştərilər"ə çevirir.</li>
       </ul>
     </div>
 
@@ -2667,7 +2734,7 @@
 
   <!-- ─── SECTION X : CONCLUSION ─── -->
   <div class="section" id="s10">
-    <div class="conclusion-section" style="margin: 0; padding: 60px 40px; border-radius: 8px;">
+    <div class="conclusion-section" style="margin: 0; border-radius: 8px;">
       <div class="conclusion-bg"></div>
       <div class="conclusion-inner">
         <span class="section-label">Onuncu bölmə</span>
