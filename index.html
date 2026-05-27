@@ -51,6 +51,7 @@
     .print-btn { display: none; }
     .section-card { box-shadow: none; border: 1px solid #ddd; }
     table { font-size: 9pt; }
+    #s12 { display: none; } /* Oyunu çapda gizlədirik */
   }
 
   /* ══════════════════════════════════════════
@@ -1433,6 +1434,252 @@
     color: var(--text-body);
     line-height: 1.75;
   }
+
+  /* ══════════════════════════════════════════
+     GAME STYLES (İSLAHAT YOLU SİMULYASIYASI)
+  ══════════════════════════════════════════ */
+  .game-wrapper {
+    background: #0f172a;
+    border: 3px solid #1e293b;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 40px 0;
+    color: var(--white);
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4), inset 0 0 20px rgba(0,0,0,0.3);
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(14, 165, 233, 0.3);
+    padding-bottom: 15px;
+  }
+
+  .game-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: #38bdf8;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .game-stats {
+    display: flex;
+    gap: 30px;
+  }
+
+  .stat-box { text-align: right; }
+  .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; }
+  .stat-value { font-size: 24px; font-weight: 700; color: #f8fafc; }
+  .stat-value.danger { color: #ef4444; }
+  .stat-value.success { color: #10b981; }
+
+  /* Mərkəzi Problem Mətni Üçün Qərargah Ekranı */
+  .problem-banner {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid #0ea5e9;
+    border-radius: 6px;
+    padding: 15px 25px;
+    color: #e0f2fe;
+    font-size: 17px;
+    text-align: center;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(14, 165, 233, 0.15);
+    margin-bottom: 25px;
+    font-weight: 500;
+  }
+
+  /* Oyun Yolu */
+  .game-track {
+    height: 120px;
+    background: #1e293b;
+    border-bottom: 3px solid #475569;
+    border-top: 3px solid #334155;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 25px;
+  }
+
+  /* Yol Üçün Grid Dizaynı (Gametic hiss) */
+  .game-track::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 25px 25px;
+  }
+
+  /* KOB (Biznes) Kvadratı (Ən Solda) */
+  .entrepreneur {
+    position: absolute;
+    left: 2%;
+    bottom: 15px;
+    width: 80px;
+    height: 80px;
+    background: #2563eb;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.6);
+    z-index: 10;
+    border: 2px solid #60a5fa;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .entrepreneur::before { content: '🏢'; font-size: 30px; margin-bottom: 4px; }
+
+  /* Zərbə anında silkələnmə animasiyası */
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px) rotate(-3deg); }
+    50% { transform: translateX(8px) rotate(3deg); }
+    75% { transform: translateX(-8px) rotate(-3deg); }
+  }
+  .shake { 
+    animation: shake 0.4s; 
+    border-color: #ef4444 !important; 
+    background: #991b1b !important; 
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.8) !important;
+  }
+
+  /* Hərəkət edən "Ziyankar Mişar" */
+  .obstacle-saw {
+    position: absolute;
+    bottom: 25px;
+    font-size: 45px;
+    line-height: 1;
+    color: #ef4444;
+    filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.8));
+    animation: spin 0.6s linear infinite;
+    z-index: 15;
+    display: none; /* Problemlər spawn olduqca aktivləşəcək */
+  }
+
+  @keyframes spin { 100% { transform: rotate(-360deg); } }
+
+  /* İdarəetmə Paneli (Dinamik Düymələr Üçün) */
+  .game-controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  .reform-btn {
+    background: #1e293b;
+    border: 1px solid #475569;
+    color: #cbd5e1;
+    padding: 18px 10px;
+    border-radius: 6px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    line-height: 1.4;
+  }
+
+  .reform-btn:hover:not(:disabled) {
+    background: #334155;
+    border-color: #38bdf8;
+    color: #f8fafc;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+  }
+
+  .reform-btn:active:not(:disabled) {
+    background: #0ea5e9;
+    color: white;
+    transform: scale(0.97);
+  }
+  
+  .reform-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .game-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    border-radius: 12px;
+    text-align: center;
+    padding: 30px;
+  }
+
+  .overlay-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    color: #38bdf8;
+    margin-bottom: 15px;
+  }
+
+  .overlay-text {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 16px;
+    color: #e2e8f0;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    max-width: 500px;
+  }
+
+  .start-btn {
+    background: #0ea5e9;
+    color: white;
+    border: none;
+    padding: 14px 35px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s;
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+  }
+
+  .start-btn:hover { background: #0284c7; transform: translateY(-2px); }
+
+  .floating-text {
+    position: absolute;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    animation: floatUp 1.2s ease-out forwards;
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  @keyframes floatUp {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-50px); }
+  }
+
+  @media (max-width: 768px) {
+    .game-controls { grid-template-columns: 1fr; }
+    .reform-btn { padding: 12px; font-size: 12px; }
+  }
 </style>
 </head>
 <body>
@@ -1452,6 +1699,7 @@
   <div class="sidebar-dot" onclick="scrollToSection('s9')" title="SWOT analizi"></div>
   <div class="sidebar-dot" onclick="scrollToSection('s10')" title="Nəticə"></div>
   <div class="sidebar-dot" onclick="scrollToSection('s11')" title="İstinadlar"></div>
+  <div class="sidebar-dot" onclick="scrollToSection('s12')" title="Simulyasiya"></div>
 </nav>
 
 <button class="print-btn" onclick="window.print()">⊞ Çap / PDF</button>
@@ -1533,6 +1781,7 @@
     <li><a href="#s9"><span class="toc-num">IX.</span><span class="toc-text">SWOT analiz və strateji risk idarəetməsi</span><span class="toc-dots"></span></a></li>
     <li><a href="#s10"><span class="toc-num">X.</span><span class="toc-text">Nəticə və tövsiyələr</span><span class="toc-dots"></span></a></li>
     <li><a href="#s11"><span class="toc-num">XI.</span><span class="toc-text">İstinadlar</span><span class="toc-dots"></span></a></li>
+    <li><a href="#s12"><span class="toc-num">XII.</span><span class="toc-text">İnteraktiv Simulyasiya: "İslahat Yolu"</span><span class="toc-dots"></span></a></li>
   </ul>
 </div>
 
@@ -1548,13 +1797,13 @@
       <h2 class="section-title">Giriş</h2>
     </div>
 
-    <p>Naxçıvan Muxtar Respublikasının coğrafi eksklav statusu, mürəkkəb regional geosiyasi vəziyyəti və uzun illər davam etmiş mərkəzləşdirilmiş inzibati idarəetmə təcrübəsi onun makroiqtisadi modelinin xüsusi, kövrək və unikal bir strukturda formalaşmasını şərtləndirmişdir. Mövcud vəziyyətin dərindən və rasional təhlili göstərir ki, regionun inkişaf paradiqmasında müşahidə olunan əsas fundamental problem ənənəvi olaraq qəbul edildiyi kimi təkcə maliyyə, investisiya və ya kapital çatışmazlığı deyil. İqtisadi durğunluğun və passivliyin kökündə dayanan əsas məsələ iqtisadi fəaliyyəti, risk almağı və rəqabəti stimullaşdıran institusional mühitin dərin deformasiyasıdır. Naxçıvanda iqtisadi inkişafın gələcək arxitekturasının əsas hərəkətverici qüvvəsi heç bir halda mərkəzi büdcə transfertləri və ya birbaşa dövlət xərcləri ola bilməz, bu mühərrik yalnız koordinasiyalı özəl təşəbbüskarlıq və qarşılıqlı etimada əsaslanan sahibkarlıq ekosistemi ola bilər. Bu fəlsəfə, iqtisadi idarəetmənin mexaniki mərkəzləşdirmədən orqanik, bazar əsaslı mərkəzsizləşdirməyə keçidini daxili zərurətə çevirir.</p>
+    <p>Naxçıvan Muxtar Respublikasının coğrafi eksklav statusu, mürəkkəb regional geosiyasi vəziyyəti və uzun illər davam etmiş mərkəzləşdirilmiş inzibati idarəetmə təcrübəsi onun makroiqtisadi modelinin xüsusi, kövrək və unikal bir strukturda formalaşmasını şərtləndirmişdir. Mövcud vəziyyətin dərindən və rasional təhlili göstərir ki, regionun inkişaf paradiqmasında müşahidə olunan əsas fundamental problem ənənəvi olaraq qəbul edildiyi kimi təkcə maliyyə, investisiya və ya kapital çatışmazlığı deyil. İqtisadi durğunluğun və passivliyin kökündə dayanan əsas məsələ iqtisadi fəaliyyəti, risk almağı və rəqabəti stimullaşdıran institusional mühitin dərin deformasiyasıdır. Naxçıvanda iqtisadi inkişafın gələcək arxitekturasının əsas hərəkətverici qüvvəsi heç bir halda mərkəzi büdcə transfertlərinə, kütləvi dövlət xərclərinə, qapalı subsidiyalara və çox məhdud, hökumətə yaxın qrupların inhisarında olan tikinti, təchizat və istehsal layihələrinə əsaslanırdı.</p>
 
     <p>Keçid iqtisadiyyatlarında və xüsusilə post-sovet məkanında iqtisadi durğunluğun əsas səbəblərindən biri rəsmi institutların zəifləməsi fonunda qeyri-rəsmi institutların (informal institutions) dominantlıq qazanması, bazarı inhisara alması və rəqabəti əvəzləməsidir.<sup>1</sup> Tədqiqatlar göstərir ki, inkişaf etməkdə olan və keçid dövrünü yaşayan ölkələrdə təşəbbüskarlığın inkişafı və sahibkarlıq fəaliyyətinin genişlənməsi birbaşa olaraq formal qanunların deyil, cəmiyyətdə mövcud olan qeyri-rəsmi davranış normalarının, idarəetmə ənənələrinin və şəbəkələşmə formalarının təsirinə məruz qalır.<sup>2</sup></p>
 
     <p>Naxçıvanın iqtisadi mənzərəsində uzun illər ərzində formalaşmış sahibkarlıq mühitinin zəifliyi, koordinasiyanın (entrepreneurial coordination) mütləq yoxluğu, bazar əlaqələrinin süni şəkildə qoparılması və nəhayət, dərin qorxu psixologiyası məhz mərkəzləşdirilmiş inzibati komanda sisteminin keçmişdən qalmış ən ağır yan təsirləridir.</p>
 
-    <p>İnstitusional iqtisadiyyat və sosiologiya nəzəriyyələrinə əsasən, bu cür sərt nəzarət mühitlərində "etimad iqtisadiyyatı" (trust economy) tamamilə sıradan çıxır və məhv olur.<sup>4</sup> Etimad iqtisadiyyatı bazar subyektləri arasında müqavilələrin, şifahi razılaşmaların və şərikli fəaliyyətlərin dövlətin birbaşa təsirləri olmadan icra edilə biləcəyinə inamı ifadə edir. Bu inamın sarsıldığı şəraitdə sahibkarlar arasında üfüqi əlaqələr zəifləyir, kooperasiya qeyri-mümkün hala gəlir və yalnız şaquli, asılılıq yaradan, dövlətə bağlı qoruma mexanizmləri işləyir. Son illərdə Naxçıvanda səlahiyyətli nümayəndəliyin təsis olunması fonunda "regional iqtisadi bərpa" (post-authoritarian regional economic recovery) dövründə qarşıya çıxan ən böyük çətinlik, dağıdılmış sənaye müəssisələrini bərpa etməkdən daha çox, zədələnmiş iqtisadi etimadın və cəmiyyətdəki institusional davranış modellərinin yenidən bərpasıdır. Şəxslərin və biznes qurumlarının köhnə reflekslərdən xilas olması (generational change) üçün bəzən on illiklər tələb oluna bilər.<sup>4</sup> Lakin muxtar respublikanın müasir sosial-iqtisadi reallığı bu lüksə malik deyil.</p>
+    <p>İnstitusional iqtisadiyyat və sosiologiya nəzəriyyələrinə əsasən, bu cür sərt nəzarət mühitlərində "etimad iqtisadiyyatı" (trust economy) tamamilə sıradan çıxır və məhv olur.<sup>4</sup> Etimad iqtisadiyyatı bazar subyektləri arasında müqavilələrin, şifahi razılaşmaların və şərikli fəaliyyətlərin dövlətin birbaşa təsirləri olmadan icra edilə biləcəyinə inamı ifadə edir. Bu inamın sarsıldığı şəraitdə sahibkarlar arasında üfüqi əlaqələr zəifləyir, kooperasiya qeyri-mümkün hala gəlir və yalnız şaquli, asılılıq yaradan, dövlətə bağlı qoruma mexanizmləri işləyir. Son illərdə Naxçıvanda səlahiyyətli nümayəndəliyin təsis olunması fonunda "regional iqtisadi bərpa" (post-authoritarian regional economic recovery) dövründə qarşıya çıxan ən böyük çətinlik, dağıdılmış sənaye müəessisələrini bərpa etməkdən daha çox, zədələnmiş iqtisadi etimadın və cəmiyyətdəki institusional davranış modellərinin yenidən bərpasıdır. Şəxslərin və biznes qurumlarının köhnə reflekslərdən xilas olması (generational change) üçün bəzən on illiklər tələb oluna bilər.<sup>4</sup> Lakin muxtar respublikanın müasir sosial-iqtisadi reallığı bu lüksə malik deyil.</p>
 
     <p>Buna görə də, qurulacaq yeni iqtisadi quruculuq bir neçə fundamental konseptə söykənməlidir. Birincisi, kiçik regionların iqtisadi miqyaslanması (small-region economic scaling) prinsipi Naxçıvan üçün həyati əhəmiyyət daşıyır. Məhdud daxili bazar və aşağı əhali sayı ənənəvi (idxal və idxaləvəzləyici) siyasətin uğursuzluğunu bəri başdan təyin edir. Naxçıvan iqtisadiyyatı ilk gündən ən azı makro-regional miqyaslanmanı (Türkiyə, Rusiya, Avropa) hədəfləməlidir. İkincisi, tərk edilmiş istehsal güclərinin yenidən fəaliyyətə başlaması üçün mərkəzi planlaşdırma deyil, koordinasiya iqtisadiyyatı (coordination economy) canlandırılmalıdır.<sup>6</sup> Bu, dövlətin tənzimləyici rolunun azaldılması və sahibkarların, investorların və təhsil-tədqiqat mərkəzlərinin ortaq maraqlar ətrafında birgə fəaliyyətini nəzərdə tutur. Nəhayət, bütün bu elementlər sağlam, şəffaf və rəqabətədavamlı sahibkarlıq ekosistemini (entrepreneurial ecosystem) formalaşdırmalıdır. Yalnız bu cür kompleks bir ekosistem yerli investisiya iqlimini (local investment climate) bərpa edə, yerli kapitalın kənara axmasının qarşısını ala və qlobal resursları iqtisadiyyata cəlb edə bilər.</p>
   </div>
@@ -1572,13 +1821,13 @@
 
     <p>Naxçıvan Muxtar Respublikasında səlahiyyətli nümayəndəlik institutu yarananadək keçmiş rəhbərliyinin həyata keçirdiyi iqtisadi model mürəkkəb sosioloji və iqtisadi paradiqmaları özündə ehtiva edirdi. Bu modeli iqtisadi ədəbiyyatda mövcud olan terminlərlə "hiper-mərkəzləşdirilmiş regional dövlət kapitalizmi" və ya "qapalı kvota iqtisadiyyatı" kimi xarakterizə etmək mümkündür. Bu sistemdə dövlət (və ya onu təmsil edən rəhbərlik) yalnız makroiqtisadi çərçivəni tənzimləyən, qanunların aliliyini qoruyan neytral bir hakim rolu oynamır, əksinə, həm əsas oyunçu, həm dominant istehsalçı, həm yeganə sifarişçi, həm də mütləq kapital paylayıcısı kimi çıxış edirdi.</p>
 
-    <p>Rəsmi statistik hesabatlar illər boyu bu sistemin fasiləsiz və yüksələn xətt üzrə inkişafını nümayiş etdirmişdir. Məsələn, 2021-ci ilin yekunlarına dair rəsmi makroiqtisadi məlumatlara görə, Naxçıvanda Ümumi Daxili Məhsul (ÜDM) istehsalı 2020-ci illə müqayisədə 2,4 faiz artaraq 3 milyard manatı keçmiş, adambaşına düşən həcm isə 6525 manat təşkil etmişdir.<sup>8</sup> Həmin hesabatlarda ÜDM-in 59 faizdən çoxunun birbaşa istehsalın payına düşdüyü, sahibkarlara güya 31 milyon manat kredit verildiyi və il ərzində 120 yeni istehsal və xidmət sahəsinin fəaliyyətə başladığı bəyan edilirdi.<sup>8</sup> Lakin institusional asimmetriya (institutional asymmetry) və keçid iqtisadiyyatlarının rəsmi və qeyri-rəsmi uyğunsuzluqlarını araşdıran nəzəriyyələr çərçivəsində bu rəqəmlərin anatomiyası tamamilə fərqli bir iqtisadi reallığı ortaya qoyur.<sup>2</sup> Rəqəmlərin nominal olaraq yüksək olması, vətəndaşların xüsusi mülkiyyətindən, azad rəqabətdən, innovasiyadan və ya qlobal bazarlara inteqrasiyadan qaynaqlanmırdı. Bu iqtisadi həcm birbaşa mərkəzi büdcə transfertlərinə, kütləvi dövlət xərclərinə, qapalı subsidiyalara və çox məhdud, hökumətə yaxın qrupların inhisarında olan tikinti, təchizat və istehsal layihələrinə əsaslanırdı.</p>
+    <p>Rəsmi statistik hesabatlar illər boyu bu sistemin fasiləsiz və yüksələn xətt üzrə inkişafını nümayiş etdirmişdir. Məsələn, 2021-ci ilin yekunlarına dair rəsmi makroiqtisadi məlumatlara görə, Naxçıvanda Ümumi Daxili Məhsul (ÜDM) istehsalı 2020-ci illə müqayisədə 2,4 faiz artaraq 3 milyard manatı keçmiş, adambaşına düşən həcm isə 6525 manat təşkil etmişdir.<sup>8</sup> Həmin hesabatlarda ÜDM-in 59 faizdən çoxunun birbaşa istehsalın payına düşdüyü, sahibkarlara güya 31 milyon manat kredit verildiyi və il ərzində 120 yeni istehsal və xidmət sahəsinin fəaliyyətə başladığı bəyan edilirdi.<sup>8</sup> Lakin institusional asimmetriya (institutional asymmetry) və keçid iqtisadiyyatlarının rəsmi və qeyri-rəsmi uyğunsuzluqlarını araşdıran nəzəriyyələr çərçivəsində bu rəqəmlərin anatomiyası tamalayır, rəqəmlərin nominal olaraq yüksək olması, vətəndaşların xüsusi mülkiyyətindən, azad rəqabətdən, innovasiyadan və ya qlobal bazarlara inteqrasiyadan qaynaqlanmırdı. Bu iqtisadi həcm birbaşa mərkəzi büdcə transfertlərinə, kütləvi dövlət xərclərinə, qapalı subsidiyalara və çox məhdud, hökumətə yaxın qrupların inhisarında olan tikinti, təchizat və istehsal layihələrinə əsaslanırdı.</p>
 
     <p>Bu mühitdə ən böyük zərbə insan kapitalına və sahibkar psixologiyasına vurulmuşdur. "Keçid iqtisadiyyatı psixologiyası"nın (transition economy psychology) ən neqativ elementləri qabarıq şəkildə inkişaf etmişdir. Sahibkarlıq anlayışı təşəbbüskarlıq, bazar boşluqlarını tapmaq və risk almaq funksiyalarından məhrum edilərək, "dövlətdən lisenziya və ya pay almaq", "renta axtarışı" (rent-seeking) və passiv icraçılıq səviyyəsinə endirilmişdi.<sup>1</sup> İnvestisiya davranışı iqtisadi rasionalizmə, rəqabət üstünlüyünə deyil, sırf siyasi loyalığa, icazə mexanizmlərinə və görünməz sərhədlərə riayət etməyə indekslənmişdi. Bazar münasibətləri dərin deformasiyaya uğramış, özəl təşəbbüslər mərkəzi idarəetmənin qeyri-rəsmi olaraq müəyyən etdiyi "icazə verilmiş fəaliyyət kvoataları" daxilində sıxışdırılmışdı. Nəticədə, intellektual və maliyyə kapitalına malik olan yerli vətəndaşlar öz vəsaitlərini və ideyalarını Naxçıvanda reallaşdırmaqdan qorxmuş, vəsaitlərini ya tamamilə dondurmuş, ya da qeyri-rəsmi yollarla regiondan – xüsusilə Türkiyəyə və Azərbaycanın mərkəzi şəhərlərinə çıxarmağa məcbur olmuşlar. İqtisadi passivlik sadəcə tənbəllik və ya bacarıqsızlıq deyil, aqressiv və proqnozlaşdırıla bilməyən risklərə qarşı cəmiyyətin təbii, bioloji bir müdafiə mexanizmi kimi formalaşmışdı.<sup>4</sup></p>
 
     <h3 class="subsection-title" id="s2b">"Şifahi tapşırıq iqtisadiyyatı" və onun çoxşaxəli fəsadları</h3>
 
-    <p>Naxçıvanın keçmiş iqtisadi paradiqmasının idarəetmə xarakterini anlamaq üçün "şifahi siqnal iqtisadiyyatı" anlayışının dərk edilməsi mütləqdir. Bu termin, müasir qanunların, rəsmi qaydaların, dövlət proqramlarının və konstitusion hüquqların kağız üzərində mövcudluğuna rəğmən, real iqtisadi qərarların, kapital hərəkətlərinin, yoxlamaların, inhisar icazələrinin və bazara giriş hüquqlarının rəsmi sənədlərlə deyil, müstəsna olaraq qeyri-rəsmi, yazılmamış və şifahi tapşırıqlar əsasında idarə edilməsi mexanizmini ifadə edir. Post-sovet məkanındakı, eləcə də Qafqaz və Mərkəzi Asiya regionlarındakı keçid iqtisadiyyatlarının tranzaksiya mühitini tədqiq edən qlobal elmi araşdırmalar sübut edir ki, rəsmi institutların fəaliyyət qabiliyyətini itirməsi və qeyri-rəsmi əlaqələrin (managerial ties and informal networks) mütləq dominantlıq təşkil etməsi davamlı iqtisadi inkişafı mümkünsüz edir və innovasiyanı boğur.<sup>3</sup> Şifahi siqnal iqtisadiyyatının Naxçıvandakı spesifik fəsadları dörd əsas struktur oxu üzrə qruplaşdırıla və təhlil edilə bilər:</p>
+    <p>Naxçıvanın keçmiş iqtisadi paradiqmasının idarəetmə xarakterini anlamaq üçün "şifahi siqnal iqtisadiyyatı" anlayışının dərk edilməsi mütləqdir. Bu termin, müasir qanunların, rəsmi qaydaların, dövlət proqramlarının və konstitusion hüquqların kağız üzərində mövcudluğuna rəğmən, real iqtisadi qərarların, kapital hərəkətlərinin, yoxlamaların, inhisar icazələrinin və bazara giriş hüquqlarının rəsmi sənədlərlə deyil, müstəsna olaraq qeyri-rəsmi, yazılmamış və şifahi tapşırıqlar əsasında idarə edilməsi mexanizmini ifade edir. Post-sovet məkanındakı, eləcə də Qafqaz və Mərkəzi Asiya regionlarındakı keçid iqtisadiyyatlarının tranzaksiya mühitini tədqiq edən qlobal elmi araşdırmalar sübut edir ki, rəsmi institutların fəaliyyət qabiliyyətini itirməsi və qeyri-rəsmi əlaqələrin (managerial ties and informal networks) mütləq dominantlıq təşkil etməsi davamlı iqtisadi inkişafı mümkünsüz edir və innovasiyanı boğur.<sup>3</sup> Şifahi siqnal iqtisadiyyatının Naxçıvandakı spesifik fəsadları dörd əsas struktur oxu üzrə qruplaşdırıla və təhlil edilə bilər:</p>
 
     <ul class="numbered-list">
       <li>
@@ -1710,7 +1959,7 @@
         <p>Şərur və Kəngərli düzlərində geniş ərazilər sovet dövründə kütləvi tütün əkini və emalı üçün istifadə edilirdi. Hazırda bu sənaye çökmüşdür və torpaqlar əsasən taxılçılığa yönləndirilib ki, bu da su qıtlığı şəraitində rasional deyil.</p>
         <div class="modernization-block">
           <span class="mod-label">Modernizasiya ssenarisi</span>
-          <p>Naxçıvanın torpaq və iqlimi çox nadirdir. Tütün sənayesinin əvvəlki emal infrastrukturu və əkin sahələri tamamilə alternativ, çox yüksək əlavə dəyəri olan sahələrə – sənaye miqyasında zəfəran, tibbi marixuana (Avropa əczaçılıq sənayesi üçün xüsusi lisenziya ilə qapalı istehsal), lavanda, gül yağı və kosmetologiya xammalı yetişdirilməsinə transformasiya daha məqsədəuyğundur. İxrac perspektivi Avropa və Şimali Amerikadır.</p>
+          <p>Naxçıvanın torpaq və iqlimi çox nadirdir. Tütün sənayesinin əvvəlki emal infrastrukturu və əkin sahələri tamamilə alternatif, çox yüksək əlavə dəyəri olan sahələrə – sənaye miqyasında zəfəran, tibbi marixuana (Avropa əczaçılıq sənayesi üçün xüsusi lisenziya ilə qapalı istehsal), lavanda, gül yağı və kosmetologiya xammalı yetişdirilməsinə transformasiya daha məqsədəuyğundur. İxrac perspektivi Avropa və Şimali Amerikadır.</p>
         </div>
         <div style="margin-top:12px">
           <span class="sector-tag">Zəfəran</span>
@@ -1889,7 +2138,6 @@
         <li><strong>Bazar və ixrac:</strong> Qlobal tibbi və sağlamlıq turizmi bazarı 100 milyardlarla dollarla ölçülür. Duzdağ yalnız regional deyil, qlobal bir brend ola bilər.</li>
         <li><strong>Regional müqayisə və həll:</strong> İsrailin Ölü Dəniz (Dead Sea), Çexiyanın Karlovy Vary və Almaniyanın Baden-Baden modellərinin/təcrübələrinin tətbiq olunması vacib şərtdir. Tibbi personalın beynəlxalq sertifikasiyası həyata keçirilməlidir.</li>
         <li><strong>Gözardı edilən potensial:</strong> Həm Türkiyə, həm İran, həm də Ermənistanın Naxçıvanla həmsərhəd olduğu ərazilərin həmin ölkələrin daxilindəki turizm mərkəzi hesab olunan şəhərlərə uzaq məsafədə yerləşməsi və bölgə əhalisinin nisbətən aşağı gəlirli olması insanların öz ölkələri daxilində uzaq məsafələrə səyahət etməsini əlverişsiz edir. Bu isə həmin bölgələrin əhalisini Naxçıvanda formalaşdırılacaq turizm (ekoturimz, sağlamlıq turizmi, şəhər turizmi) infrstrukturu üçün potensial "müştərilər"ə çevirir.</li>
-     
       </ul>
     </div>
 
@@ -2073,7 +2321,7 @@
       <div class="platform-dot"></div>
       <div class="platform-feature-content">
         <h4>"İnvestor marketplace" modeli</h4>
-        <p>Bu, portalın ən inqilabi funksiyasıdır. Yerli bir Naxçıvanlı sahibkar öz ideyasını (məsələn, modern əczaçılıq xammalı sexi) platformaya yükləyir. Platformanın ekspertləri bu ideyanı "Pitch-deck" və vizual "Layihə Kartı" (Project Card) halına salır. Layihədə tələb olunan investisiya (məsələn, $500.000) və gözlənilən ROI (Return on Investment — qoyulan investisiyadan gözlənilən mənfəət, kapitalın geri dönüşü) göstərilir. Xaricdəki investorlar "Amazon"dan məhsul alırmış kimi, bu layihələrə səhmdar qismində baxa və investisiya edə bilərlər (Crowdfunding və ya Venture Capital modeli. Paşa Holdingin "GetKickBox" layihəsi nümunə kimi tətbiq oluna bilər).</p>
+        <p>Bu, portalın ən inqilabi funksiyasıdır. Yerli bir Naxçıvanlı sahibkar öz ideyasını (məsələn, modern əczaçılıq xammalı sexi) platformaya yükləyir. Platformanın ekspertləri bu ideyanı "Pitch-deck" və vizual "Layihə Kartı" (Project Card) halına salır. Layihədə tələb olunan investisiya (məsələn, $500.000) və gözlənilən ROI (Return on Investment — qoyulan investisiyadan gözlənilən mənfəət, kapitalın geri dönüşü) göstərilir. Xaricdəki investorlar "Amazon"dan məhsul alırmış kimi, bu layihələrə səhmdar qismində baxa və investisiya edə bilər (Crowdfunding və ya Venture Capital modeli. Paşa Holdingin "GetKickBox" layihəsi nümunə kimi tətbiq oluna bilər).</p>
       </div>
     </div>
 
@@ -2117,7 +2365,7 @@
           <h4>Strateji hədəflər &amp; icra mexanizmləri</h4>
           <ul>
             <li>"Təcili Etimad Bərpası" paketi çərçivəsində hökumət, KOB təmsilçiləri və diaspor arasında geniş, senzurasız "İqtisadi şura"nın qurulması.</li>
-            <li>"Şifahi siqnal iqtisadiyyatı"nın dərhal qadağan olunması və bütün qeyri-rəsmi yoxlamalara mütləq moratorium (təxirəsalma) elan edilməsi.</li>
+            <li>"Şifahi siqnal iqtisadiyyatının dərhal qadağan olunması və bütün qeyri-rəsmi yoxlamalara mütləq moratorium (təxirəsalma) elan edilməsi.</li>
             <li>Yerli sahibkarlar üçün amnistiya və cərimələrin silinməsi təşəbbüsü.</li>
           </ul>
         </div>
@@ -2232,7 +2480,7 @@
           <h4>Strateji hədəflər &amp; icra mexanizmləri</h4>
           <ul>
             <li>Naxçıvanın aktiv logistika mərkəzi və quru limanı kimi fəaliyyəti.</li>
-            <li>Özəl sektorun ÜDM-dəki payının mərkəzi büdcə subsidiyalarını geridə qoyması.</li>
+            <li>Özəl sektorun ÜDM-deki payının mərkəzi büdcə subsidiyalarını geridə qoyması.</li>
             <li>Cənubi Qafqazda "Doing Business" göstəriciləri üzrə ən cəlbedici lokal mikro-regiona çevrilməsi.</li>
           </ul>
         </div>
@@ -2415,62 +2663,68 @@
     </div>
   </div>
 
+  <div class="page-sep"><div class="page-sep-line"></div><div class="page-sep-diamond">◆</div><div class="page-sep-line"></div></div>
+
   <!-- ─── SECTION X : CONCLUSION ─── -->
-  <div class="conclusion-section" id="s10">
-    <div class="conclusion-bg"></div>
-    <div class="conclusion-inner">
-      <span class="section-label">Onuncu bölmə</span>
-      <h2 class="section-title">Nəticə və tövsiyələr</h2>
+  <div class="section" id="s10">
+    <div class="conclusion-section" style="margin: 0; padding: 60px 40px; border-radius: 8px;">
+      <div class="conclusion-bg"></div>
+      <div class="conclusion-inner">
+        <span class="section-label">Onuncu bölmə</span>
+        <h2 class="section-title">Nəticə və tövsiyələr</h2>
 
-      <p>Naxçıvan Muxtar Respublikasının iqtisadi gələcəyi nə qədər çox mərkəzi Azərbaycan büdcəsindən transfertlər almasından və ya hansı nəhəng dövlət binalarının tikilməsindən deyil, öz daxilindəki məhdud potensialı nə qədər səmərəli, azad və şəffaf bir şəkildə kapitalizasiya edə bilməsindən asılıdır. Mərkəzləşdirilmiş komanda sistemi onilliklər ərzində iqtisadiyyatı inzibati qaydada, süni subsidiyalarla böyütməyə çalışmış, rəsmi sənədlərdə qüsursuz rəqəmsal inkişaf göstəriciləri əldə etsə də,<sup>8</sup> real həyatda cəmiyyətdə iqtisadi etimadı, müstəqil yaşama qabiliyyətini və azad sahibkarlıq instinktini tamamilə məhv etmişdir. Post-avtoritar tranzit mərhələsində olan bir iqtisadiyyat kimi,<sup>1</sup> Naxçıvan təcili olaraq subyektiv tapşırıqlara əsaslanan "şifahi siqnal iqtisadiyyatı"ndan institusional, qanuna tabe, proqnozlaşdırıla bilən və azad rəqabətə əsaslanan etimad iqtisadiyyatına sıçrayış etməlidir.</p>
+        <p>Naxçıvan Muxtar Respublikasının iqtisadi gələcəyi nə qədər çox mərkəzi Azərbaycan büdcəsindən transfertlər almasından və ya hansı nəhəng dövlət binalarının tikilməsindən deyil, öz daxilindəki məhdud potensialı nə qədər səmərəli, azad və şəffaf bir şəkildə kapitalizasiya edə bilməsindən asılıdır. Mərkəzləşdirilmiş komanda sistemi onilliklər ərzində iqtisadiyyatı inzibati qaydada, süni subsidiyalarla böyütməyə çalışmış, rəsmi sənədlərdə qüsursuz rəqəmsal inkişaf göstəriciləri əldə etsə də,<sup>8</sup> real həyatda cəmiyyətdə iqtisadi etimadı, müstəqil yaşama qabiliyyətini və azad sahibkarlıq instinktini tamamilə məhv etmişdir. Post-avtoritar tranzit mərhələsində olan bir iqtisadiyyat kimi,<sup>1</sup> Naxçıvan təcili olaraq subyektiv tapşırıqlara əsaslanan "şifahi siqnal iqtisadiyyatından" institusional, qanuna tabe, proqnozlaşdırıla bilən və azad rəqabətə əsaslanan etimad iqtisadiyyatına sıçrayış etməlidir.</p>
 
-      <div class="strategic-theses">
-        <h3 style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:3px;color:var(--gold);margin-bottom:20px;text-transform:uppercase;">Əsas strateji tezislər</h3>
+        <div class="strategic-theses">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:3px;color:var(--gold);margin-bottom:20px;text-transform:uppercase;">Əsas strateji tezislər</h3>
 
-        <div class="thesis-item">
-          <div class="thesis-num">◆</div>
-          <p class="thesis-text">İqtisadi inkişaf yuxarıdan-aşağıya (top-down) verilən əmrlərlə deyil, yalnız aşağıdan-yuxarıya (bottom-up) işləyən koordinasiyalı özəl təşəbbüslərlə baş tutmalıdır. Məmurlar bazarı idarə etməməli, bazar özünü idarə etməlidir.</p>
+          <div class="thesis-item">
+            <div class="thesis-num">◆</div>
+            <p class="thesis-text">İqtisadi inkişaf yuxarıdan-aşağıya (top-down) verilən əmrlərlə deyil, yalnız aşağıdan-yuxarıya (bottom-up) işləyən koordinasiyalı özəl təşəbbüslərlə baş tutmalıdır. Məmurlar bazarı idarə etməməli, bazar özünü idarə etməlidir.</p>
+          </div>
+          <div class="thesis-item">
+            <div class="thesis-num">◆</div>
+            <p class="thesis-text">SSRİ dövründən qalma irimiqyaslı, lakin istifadəsiz sənaye infrastrukturunun reanimasiyası, müasir dövrün tələblərinə uyğun PPP (Dövlət-Özəl tərəfdaşlıq) layihələri, sıfır tullantı texnologiyaları və xarici birgə müəssisələr vasitəsilə mümkündür.</p>
+          </div>
+          <div class="thesis-item">
+            <div class="thesis-num">◆</div>
+            <p class="thesis-text">Naxçıvanın coğrafi blokadadan qaynaqlanan logistik maneələri yalnız və yalnız rəqəmsal xidmətlər, IT outsourcing, premium yüngül aqro-emal və sağlamlıq turizmi kimi fiziki sərhəd tanımayan sektorların mütləq inkişafı ilə neytrallaşdırılmalıdır.</p>
+          </div>
+          <div class="thesis-item">
+            <div class="thesis-num">◆</div>
+            <p class="thesis-text">Naxçıvan diasporası regiona yalnız nostalji və vətənpərvərlik zəminində deyil, şəffaf rəqəmsal platformalar (InvestNakhchivan.com kimi) və rasional qazanc əldə etmək ehtimalı (ROI) zəminində, biznes tərəfdaşı kimi cəlb olunmalıdır.</p>
+          </div>
         </div>
-        <div class="thesis-item">
-          <div class="thesis-num">◆</div>
-          <p class="thesis-text">SSRİ dövründən qalma irimiqyaslı, lakin istifadəsiz sənaye infrastrukturunun reanimasiyası, müasir dövrün tələblərinə uyğun PPP (Dövlət-Özəl tərəfdaşlıq) layihələri, sıfır tullantı texnologiyaları və xarici birgə müəssisələr vasitəsilə mümkündür.</p>
-        </div>
-        <div class="thesis-item">
-          <div class="thesis-num">◆</div>
-          <p class="thesis-text">Naxçıvanın coğrafi blokadadan qaynaqlanan logistik maneələri yalnız və yalnız rəqəmsal xidmətlər, IT outsourcing, premium yüngül aqro-emal və sağlamlıq turizmi kimi fiziki sərhəd tanımayan sektorların mütləq inkişafı ilə neytrallaşdırılmalıdır.</p>
-        </div>
-        <div class="thesis-item">
-          <div class="thesis-num">◆</div>
-          <p class="thesis-text">Naxçıvan diasporası regiona yalnız nostalji və vətənpərvərlik zəminində deyil, şəffaf rəqəmsal platformalar (InvestNakhchivan.com kimi) və rasional qazanc əldə etmək ehtimalı (ROI) zəminində, biznes tərəfdaşı kimi cəlb olunmalıdır.</p>
-        </div>
-      </div>
 
-      <div class="practical-recs">
-        <h3>Praktik icra üçün önəmli tövsiyələr</h3>
+        <div class="practical-recs">
+          <h3>Praktik icra üçün önəmli tövsiyələr</h3>
 
-        <div class="rec-item">
-          <div class="rec-num">1</div>
-          <p class="rec-text">Hökumət iqtisadi aktlardan, zavod idarəçiliyindən, qiymət tənzimləmələrindən tamamilə geri çəkilərək yalnız infrastruktur, xidmət və ədalətli arbitraj (tənzimləyici) roluna qayıtmalıdır.</p>
+          <div class="rec-item">
+            <div class="rec-num">1</div>
+            <p class="rec-text">Hökumət iqtisadi aktlardan, zavod idarəçiliyindən, qiymət tənzimləmələrindən tamamilə geri çəkilərək yalnız infrastruktur, xidmət və ədalətli arbitraj (tənzimləyici) roluna qayıtmalıdır.</p>
+          </div>
+          <div class="rec-item">
+            <div class="rec-num">2</div>
+            <p class="rec-text">Bütün dövlət satınalmaları, investisiya tenderləri və mədən lisenziyaları tam rəqəmsallaşdırılmalı, "qapalı qapılar" arxasından çıxarılaraq rəqəmsal platformalarda açıq, qlobal rəqabətə təqdim edilməlidir.</p>
+          </div>
+          <div class="rec-item">
+            <div class="rec-num">3</div>
+            <p class="rec-text">"Regional Sahibkar Şəbəkəsi" rəsmi olaraq formalaşdırılmalı, sahibkarlar arasında məlumat mübadiləsi, güvən formlaşdırılması, ortaq istehsalat kooperativlərinin qurulması və etimadın bərpası üçün rəsmi platformalar (İqtisadi Forumlar, İnvestisiya Sammitləri) mütəmadi təşkil edilməlidir.</p>
+          </div>
+          <div class="rec-item">
+            <div class="rec-num">4</div>
+            <p class="rec-text">Yeni gələn xarici və yerli investorlar üçün riskləri azaldacaq "10 illik toxunulmaz mülkiyyət və vergi proqnozlaşdırılabilənliyi zəmanəti" qanunvericiliklə təsdiqlənməli və hüquqi toxunulmazlıq ən yüksək səviyyədə bəyan edilməlidir.</p>
+          </div>
         </div>
-        <div class="rec-item">
-          <div class="rec-num">2</div>
-          <p class="rec-text">Bütün dövlət satınalmaları, investisiya tenderləri və mədən lisenziyaları tam rəqəmsallaşdırılmalı, "qapalı qapılar" arxasından çıxarılaraq rəqəmsal platformalarda açıq, qlobal rəqabətə təqdim edilməlidir.</p>
-        </div>
-        <div class="rec-item">
-          <div class="rec-num">3</div>
-          <p class="rec-text">"Regional Sahibkar Şəbəkəsi" rəsmi olaraq formalaşdırılmalı, sahibkarlar arasında məlumat mübadiləsi, güvən formlaşdırılması, ortaq istehsalat kooperativlərinin qurulması və etimadın bərpası üçün rəsmi platformalar (İqtisadi Forumlar, İnvestisiya Sammitləri) mütəmadi təşkil edilməlidir.</p>
-        </div>
-        <div class="rec-item">
-          <div class="rec-num">4</div>
-          <p class="rec-text">Yeni gələn xarici və yerli investorlar üçün riskləri azaldacaq "10 illik toxunulmaz mülkiyyət və vergi proqnozlaşdırılabilənliyi zəmanəti" qanunvericiliklə təsdiqlənməli və hüquqi toxunulmazlıq ən yüksək səviyyədə bəyan edilməlidir.</p>
-        </div>
-      </div>
 
-      <div style="margin-top:48px;padding:32px 40px;background:rgba(184,151,58,0.08);border:1px solid rgba(184,151,58,0.2);">
-        <p style="font-family:'EB Garamond',serif;font-size:18px;font-style:italic;color:rgba(245,240,232,0.9);text-align:center;margin:0;line-height:1.9;">Bu hərtərəfli yol xəritəsi emosional tənqiddən və populyar vədlərdən uzaq, sübutlara, beynəlxalq praktikaya və reallıqlara əsaslanan texnokratik bir idarəetmə metodologiyasıdır. Yeni iqtisadi sistemin təməl fəlsəfəsi inzibati qorxu yox, azad təşəbbüs, məhdud qrupların inhisarı yox, geniş əməkdaşlıq, qaranlıq şifahi idarəetmə yox, mütləq rəqəmsal şəffaflıq olmalıdır. Yalnız bu institusional mühitin səmimi və fasiləsiz təmin edildiyi təqdirdə Naxçıvan regionun iqtisadi və rəqəmsal mərkəzinə çevrilə bilər. Kənardan asılı olmadan öz taleyini özü müəyyən etmək mənasında işlənən "öz əlim, öz başım" metaforasından çıxış edərək deyə bilərik ki, özəl sektorun inkişafı Naxçıvanın "öz əli" olmasının yeganə yoludur. </p>
+        <div style="margin-top:48px;padding:32px 40px;background:rgba(184,151,58,0.08);border:1px solid rgba(184,151,58,0.2);">
+          <p style="font-family:'EB Garamond',serif;font-size:18px;font-style:italic;color:rgba(245,240,232,0.9);text-align:center;margin:0;line-height:1.9;">Bu hərtərəfli yol xəritəsi emosional tənqiddən və populyar vədlərdən uzaq, sübutlara, beynəlxalq praktikaya və reallıqlara əsaslanan texnokratik bir idarəetmə metodologiyasıdır. Yeni iqtisadi sistemin təməl fəlsəfəsi inzibati qorxu yox, azad təşəbbüs, məhdud qrupların inhisarı yox, geniş əməkdaşlıq, qaranlıq şifahi idarəetmə yox, mütləq rəqəmsal şəffaflıq olmalıdır. Yalnız bu institusional mühitin səmimi və fasiləsiz təmin edildiyi təqdirdə Naxçıvan regionun iqtisadi və rəqəmsal mərkəzinə çevrilə bilər. Kənardan asılı olmadan öz taleyini özü müəyyən etmək mənasında işlənən "öz əlim, öz başım" metaforasından çıxış edərək deyə bilərik ki, özəl sektorun inkişafı Naxçıvanın "öz əli" olmasının yeganə yoludur.</p>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="page-sep"><div class="page-sep-line"></div><div class="page-sep-diamond">◆</div><div class="page-sep-line"></div></div>
 
   <!-- ─── REFERENCES ─── -->
   <div class="references-section" id="s11">
@@ -2520,6 +2774,73 @@
     </ol>
   </div>
 
+  <div class="page-sep"><div class="page-sep-line"></div><div class="page-sep-diamond">◆</div><div class="page-sep-line"></div></div>
+
+  <!-- ╔══════════════════════════════════════════════╗ -->
+  <!-- ║         NEW SECTION: GAME / SIMULATION       ║ -->
+  <!-- ╚══════════════════════════════════════════════╝ -->
+  <div class="section" id="s12">
+    <div class="section-header">
+      <span class="section-label">On ikinci bölmə</span>
+      <h2 class="section-title">İnteraktiv simulyasiya: "Öz əlimizdəki sahibkarlıq"</h2>
+    </div>
+
+    <p style="margin-bottom: 20px;">Sənəddə təsvir edilən <strong>"Dövlət maneələri təmizləyən qalxan rolunda olmalıdır"</strong> fəlsəfəsini əyani şəkildə sınaqdan keçirmək üçün "oyunlaşdırılmış" simulyasiya. Düşünün ki, siz dövlətin məsul şəxsisiniz, sahibkar isə bazar şəraitində inkişaf etməyə və biznesini böyütməyə çalışır. Onun qarşısına çıxan əngəlləri doğru "İslahat" düyməsinə vaxtında klikləyərək təmizləyin. Sahibkarın ilk milyonunu qazanmağa kömək edin. Gecikmiş və ya səhv verilmiş qərar sahibkarlıq mühitini iflasa aparır. (Başlanğız üçün sahibkara 100 000 AZN qrant və ya güzəştli kredit verilib)</p>
+
+    <!-- OYUN KONTEYNERİ -->
+    <div class="game-wrapper" id="gameBox">
+      
+      <!-- Game Over / Start Screen -->
+      <div class="game-overlay" id="gameOverlay">
+        <h3 class="overlay-title">İslahat Yolu</h3>
+        <p class="overlay-text">
+          Başlanğıc büdcə: <strong style="color: #4CAF50;">100,000 AZN</strong><br><br>
+          Hər dəfə ekranda bir problem ortaya çıxacaq və sağdan kəsici mişar (⚙️) formasında biznesə doğru yaxınlaşacaq.<br>
+          Aşağıdakı 3 təklifdən yeganə <strong>doğru mexanizmi</strong> seçərək yaranmış problemi ortadan qaldırın.<br><br>
+          Doğru və vaxtında həll: <strong style="color:#4CAF50">+50,000 AZN</strong><br>
+          Yanlış və ya gecikmiş qərar: <strong style="color:#ef4444;">-50,000 AZN</strong>
+        </p>
+        <button class="start-btn" onclick="startGame()">Simulyasiyanı Başlat</button>
+      </div>
+
+      <!-- Game Header / Stats -->
+      <div class="game-header">
+        <div class="game-title">İqtisadi tənzimləmə paneli</div>
+        <div class="game-stats">
+          <div class="stat-box">
+            <div class="stat-label">Hədəf</div>
+            <div class="stat-value" style="color:var(--cream)">1,000,000 AZN</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Cari Büdcə</div>
+            <div class="stat-value" id="moneyDisplay">100,000 AZN</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Problem Mətni (Banner) -->
+      <div class="problem-banner" id="problemDisplay">
+        Simulyasiyanın başlaması gözlənilir...
+      </div>
+
+      <!-- Game Board -->
+      <div class="game-track" id="track">
+        <div class="entrepreneur" id="playerCard">BİZNES</div>
+        <!-- Obstacle Saw (Ziyankar Mişar) -->
+        <div class="obstacle-saw" id="activeObstacle">⚙️</div>
+      </div>
+
+      <!-- Controls (Dynamic Buttons) -->
+      <div class="game-controls" id="gameControls">
+        <!-- Buttons are injected via JS -->
+        <button class="reform-btn" disabled>Həll Mexanizmi 1</button>
+        <button class="reform-btn" disabled>Həll Mexanizmi 2</button>
+        <button class="reform-btn" disabled>Həll Mexanizmi 3</button>
+      </div>
+
+    </div>
+  </div>
+
 </div><!-- /document-body -->
 
 <script>
@@ -2529,7 +2850,7 @@
   }
 
   // Sidebar active dot
-  const sections = ['cover','toc','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11'];
+  const sections = ['cover','toc','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12'];
   const dots = document.querySelectorAll('.sidebar-dot');
 
   window.addEventListener('scroll', () => {
@@ -2540,6 +2861,245 @@
     });
     dots.forEach((d, i) => d.classList.toggle('active', i === current));
   });
+
+  /* ══════════════════════════════════════════════
+     GAME LOGIC (SİMULYASİYA)
+  ══════════════════════════════════════════════ */
+  let capital = 100000;
+  const target = 1000000;
+  let isPlaying = false;
+  let isObstacleActive = false;
+  let gameLoopReq;
+  
+  let currentProblem = null;
+  let sawPos = 100;
+  let baseSpeed = 0.25; // 100-dən 0-a təxminən 6.5 saniyə (60fps üçün)
+  let currentSpeed = 0;
+
+  const moneyDisplay = document.getElementById('moneyDisplay');
+  const track = document.getElementById('track');
+  const overlay = document.getElementById('gameOverlay');
+  const problemDisplay = document.getElementById('problemDisplay');
+  const sawElement = document.getElementById('activeObstacle');
+  const controlsDiv = document.getElementById('gameControls');
+  const playerCard = document.getElementById('playerCard');
+
+  // MÜKƏMMƏL HƏLL MEXANİZMLƏRİ (DİNAMİK BAZA)
+  const solutionsBase = [
+    { id: 's1', text: 'Elektron gömrük (e-Customs)' },
+    { id: 's2', text: 'Tənzimləyici gilotin (Lisenziya prosedurunun ləğvi)' },
+    { id: 's3', text: 'Anti-inhisar məcəlləsinin tətbiqi' },
+    { id: 's4', text: 'Vahid pəncərə sistemi' },
+    { id: 's5', text: 'Biznes Ombudsmanlığının yaradılması' },
+    { id: 's6', text: 'InvesInNakhchivan investisiya portalı' },
+    { id: 's7', text: 'InvesInNakhchivan investisiya portalı' },
+    { id: 's8', text: 'Sahibkar kooperativlərinin təşviqi' },
+    { id: 's9', text: 'Məhkəmə şəffaflığının təminatı' },
+    { id: 's10', text: 'Azad İqtisadi Zona (AİZ) təsdiqi' },
+    { id: 's11', text: 'Rəqəmsal Vergi Portalı' },
+    { id: 's12', text: 'Elektron Tender (e-Procurement)' },
+    { id: 's13', text: 'Süni intellektlə təchiz edilmiş audit' },
+    { id: 's14', text: 'Güzəştli KOB kredit fondu' },
+    { id: 's15', text: 'Elektron məhkəmə (e-Court) inteqrasiyası' }
+  ];
+
+  // PROBLEM BAZASI (Fərqli sürət və doğru variantlar)
+  const problemsBase = [
+    { text: "Gömrükdə idxal edilən xammal üçün süni ləngidilmə yaradılır və qeyri-rəsmi ödəniş tələb olunur.", correct: 's1', speedMult: 1.1 },
+    { text: "Yerli bazara daxil olmaq istəyən yeni şirkət, mövcud monopolistinin təzyiqi ilə bazardan sıxışdırılır.", correct: 's3', speedMult: 1.25 },
+    { text: "Sahibkar şirkətin qeydiyyata alınması üçün 10 fərqli qurumdan kağız sənəd yığmaq məcburiyyətindədir.", correct: 's2', speedMult: 0.9 },
+    { text: "Tenderlərdə hər zaman eyni şirkət qalib gəlir.", correct: 's12', speedMult: 1.1 },
+    { text: "Yerli aqro-istehsalçılar pərakəndə və tək olduqları üçün qlobal Avropa bazarına məhsul çıxara bilmirlər.", correct: 's8', speedMult: 0.8 },
+    { text: "Vergi müfəttişləri hər ay əsassız olaraq sənədlərlə şirkəti yoxlayaraq fəaliyyəti iflic edir.", correct: 's11', speedMult: 1.35 },
+    { text: "Xarici diaspor nümayəndələri vəsaitlərin qorunmasına inanmır və birbaşa investisiya gətirməkdən qorxur.", correct: 's6', speedMult: 1.0 },
+    { text: "Yüksək texnologiyalı xarici İT şirkəti regionda ofis açmaq üçün vergisiz xüsusi ərazi axtarır.", correct: 's10', speedMult: 1.2 },
+    { text: "Məmur qanunsuz olaraq fabrikin fəaliyyətini dayandırıb və sahibkar şikayət ünvanlayacağı yer tapmır.", correct: 's5', speedMult: 1.4 },
+    { text: "Dövlətin boş sənaye torpaqları barədə məlumatlar potensial investorlar üçün əlçatan deyil.", correct: 's7', speedMult: 0.95 }
+  ];
+
+  function formatMoney(amount) {
+    return amount.toLocaleString('en-US') + " AZN";
+  }
+
+  function updateMoneyUI() {
+    moneyDisplay.innerText = formatMoney(capital);
+    if (capital <= 50000) moneyDisplay.className = 'stat-value danger';
+    else if (capital >= 500000) moneyDisplay.className = 'stat-value success';
+    else moneyDisplay.className = 'stat-value';
+  }
+
+  function createFloatingText(text, isPositive) {
+    const floatEl = document.createElement('div');
+    floatEl.className = 'floating-text';
+    floatEl.innerText = text;
+    floatEl.style.color = isPositive ? '#10b981' : '#ef4444';
+    // Mərkəzdə yuxarıya doğru animasiya
+    floatEl.style.left = '50%';
+    floatEl.style.transform = 'translateX(-50%)';
+    floatEl.style.bottom = '80px';
+    track.appendChild(floatEl);
+    setTimeout(() => { if(track.contains(floatEl)) floatEl.remove(); }, 1200);
+  }
+
+  function triggerBusinessShake() {
+    playerCard.classList.remove('shake');
+    void playerCard.offsetWidth; // trigger reflow
+    playerCard.classList.add('shake');
+    setTimeout(() => playerCard.classList.remove('shake'), 400);
+  }
+
+  function renderButtons(options) {
+    controlsDiv.innerHTML = '';
+    options.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.className = 'reform-btn';
+      btn.innerText = opt.text;
+      btn.onclick = () => handleAnswer(opt.id);
+      controlsDiv.appendChild(btn);
+    });
+  }
+
+  function disableButtons() {
+    const btns = controlsDiv.querySelectorAll('.reform-btn');
+    btns.forEach(b => b.disabled = true);
+  }
+
+  function spawnNextProblem() {
+    if (!isPlaying) return;
+
+    // Təsadüfi problem seç
+    currentProblem = problemsBase[Math.floor(Math.random() * problemsBase.length)];
+    problemDisplay.innerHTML = `⚠️ DİQQƏT: ${currentProblem.text}`;
+    
+    // Doğru və yanlış cavabların seçilməsi
+    const correctObj = solutionsBase.find(s => s.id === currentProblem.correct);
+    const wrongs = solutionsBase.filter(s => s.id !== currentProblem.correct).sort(() => 0.5 - Math.random());
+    
+    const currentOptions = [correctObj, wrongs[0], wrongs[1]].sort(() => 0.5 - Math.random());
+    
+    renderButtons(currentOptions);
+
+    // Mişarın parametrlərini sıfırla
+    sawPos = 100;
+    currentSpeed = baseSpeed * currentProblem.speedMult;
+    sawElement.style.display = 'block';
+    sawElement.style.left = sawPos + '%';
+    
+    isObstacleActive = true;
+  }
+
+  function handleAnswer(solutionId) {
+    if (!isObstacleActive) return;
+    isObstacleActive = false;
+    disableButtons();
+    sawElement.style.display = 'none';
+
+    if (solutionId === currentProblem.correct) {
+      capital += 50000;
+      createFloatingText('+50,000 AZN (Uğurlu Həll!)', true);
+      problemDisplay.innerHTML = `<span style="color:#10b981;">✅ Problem həll edildi. Biznes böyüyür!</span>`;
+    } else {
+      capital -= 50000;
+      createFloatingText('Yanlış Mexanizm! -50,000 AZN', false);
+      triggerBusinessShake();
+      problemDisplay.innerHTML = `<span style="color:#ef4444;">❌ Yanlış islahat seçimi! Məmurlar fürsətdən istifadə etdi.</span>`;
+    }
+
+    updateMoneyUI();
+    
+    if(checkGameStatus()) return; // Oyun bitibsə növbəti problem gəlməsin
+    
+    setTimeout(spawnNextProblem, 1500);
+  }
+
+  function gameLoop() {
+    if (!isPlaying) return;
+
+    if (isObstacleActive) {
+      sawPos -= currentSpeed;
+      sawElement.style.left = sawPos + '%';
+
+      // Biznes kartı sol tərəfdə (left: 2%, eni 80px). Hardasa 12% -ə çatanda zərbə sayılır.
+      if (sawPos <= 12) {
+        isObstacleActive = false;
+        disableButtons();
+        sawElement.style.display = 'none';
+
+        capital -= 50000;
+        createFloatingText('ZƏRBƏ! -50,000 AZN', false);
+        triggerBusinessShake();
+        problemDisplay.innerHTML = `<span style="color:#ef4444;">💥 Gecikdiniz! Problem biznesə birbaşa zərər vurdu.</span>`;
+        
+        updateMoneyUI();
+        
+        if(!checkGameStatus()) {
+            setTimeout(spawnNextProblem, 1500);
+        }
+      }
+    }
+
+    gameLoopReq = requestAnimationFrame(gameLoop);
+  }
+
+  function checkGameStatus() {
+    if (capital >= target) {
+      endGame(true);
+      return true;
+    } else if (capital <= 0) {
+      capital = 0;
+      updateMoneyUI();
+      endGame(false);
+      return true;
+    }
+    return false;
+  }
+
+  function startGame() {
+    capital = 100000;
+    updateMoneyUI();
+    isPlaying = true;
+    overlay.style.display = 'none';
+    
+    // Reset Everything
+    isObstacleActive = false;
+    sawElement.style.display = 'none';
+    problemDisplay.innerHTML = "Sistem hazırlanır...";
+    
+    setTimeout(spawnNextProblem, 1000);
+    
+    if(!gameLoopReq) {
+      gameLoopReq = requestAnimationFrame(gameLoop);
+    }
+  }
+
+  function endGame(isWin) {
+    isPlaying = false;
+    isObstacleActive = false;
+    cancelAnimationFrame(gameLoopReq);
+    gameLoopReq = null;
+    
+    overlay.style.display = 'flex';
+    
+    if (isWin) {
+      overlay.innerHTML = `
+        <h3 class="overlay-title" style="color:#10b981">🏆 Qələbə! Azad Ekosistem Quruldu!</h3>
+        <p class="overlay-text">
+          Təbrik edirik! Siz dövlət olaraq biznesə maneə törədən bütün problemləri ən doğru mexanizmlərlə və sürətlə kənarlaşdırdınız. 
+          Naxçıvan sahibkarları qlobal bazara çıxaraq hədəflənən 1 Milyon AZN büdcəyə çatdılar! İqtisadi transformasiya uğurla tamamlandı.
+        </p>
+        <button class="start-btn" onclick="startGame()">Yenidən Oyna</button>
+      `;
+    } else {
+      overlay.innerHTML = `
+        <h3 class="overlay-title" style="color:#ef4444">🛑 İflas! Bürokratik Çöküş!</h3>
+        <p class="overlay-text">
+          Səhv mexanizmlərin tətbiqi və islahatlarda ləngimə səbəbindən bürokratik əngəllər, inhisar və qanunsuz yoxlamalar yerli biznesi məhv etdi. KOB krediti sıfırlandı. 
+          Unutmayın: Problemlərə doğru və anında müdaxilə etməsəniz iqtisadiyyat yaşaya bilməz.
+        </p>
+        <button class="start-btn" onclick="startGame()">Səhvləri Düzəlt (Yenidən Başla)</button>
+      `;
+    }
+  }
 </script>
 </body>
 </html>
